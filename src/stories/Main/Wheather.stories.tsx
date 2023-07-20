@@ -1,15 +1,15 @@
 import GlobalThemeProvider from "../../assets/styles/GlobalThemeProvider";
-import Whether from "../../components/Main/Whether";
+import Wheather from "../../components/Main/Wheather";
 
 export default {
-  title: "Component/Whether",
-  component: Whether,
+  title: "Component/Wheather",
+  component: Wheather,
 };
 
 export const Default = () => {
   return (
     <GlobalThemeProvider>
-      <Whether />
+      <Wheather />
     </GlobalThemeProvider>
   );
 };

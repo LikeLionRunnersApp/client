@@ -1,30 +1,22 @@
 import styled from "@emotion/styled";
 import theme from "../../../assets/styles/theme";
+import useDate from "../../../hooks/useDate";
 
 interface TodayDateProps {
   color: keyof typeof theme.palette;
 }
 
-function handleFormatedDate(): string {
-  const today: Date = new window.Date();
-  const year: number = today.getFullYear();
-  const month: number = today.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
-  const day: number = today.getDate();
-
-  const formattedMonth: string = month < 10 ? `0${month}` : `${month}`;
-  const formattedDay: string = day < 10 ? `0${day}` : `${day}`;
-
-  const formattedDate: string = `${year}-${formattedMonth}-${formattedDay}`;
-  return formattedDate;
-}
-
 const Date = () => {
-  const todayDate: string = handleFormatedDate();
+  const todayDate: string[] = useDate();
+  const year = todayDate[0]
+  const month = todayDate[1]
+  const day = todayDate[2]
+  const formattedDate: string = `${year}-${month}-${day}`;
 
   return (
     <DateContainer>
       <DateTitle>Today</DateTitle>
-      <TodayDate color={"darkGray"}>{todayDate}</TodayDate>
+      <TodayDate color={"darkGray"}>{formattedDate}</TodayDate>
     </DateContainer>
   );
 };
