@@ -64,10 +64,8 @@ const Wheather = () => {
         ny: "101",
       };
       const res = await axios.get(url, { params });
-
       const PTY = parseInt(res.data.response.body.items.item[6].fcstValue);
       const SKY = parseInt(res.data.response.body.items.item[18].fcstValue);
-
       handleTodayWheather(PTY, SKY);
     };
     getWheather();

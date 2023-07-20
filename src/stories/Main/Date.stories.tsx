@@ -2,7 +2,7 @@ import Date from "../../components/Main/Date";
 import GlobalThemeProvider from "../../assets/styles/GlobalThemeProvider";
 
 export default {
-  title: "Component/Date",
+  title: "Component/Main/Date",
   component: Date,
 };
 

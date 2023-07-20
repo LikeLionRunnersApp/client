@@ -1,15 +1,15 @@
+import AlertButton from "../../components/Common/UI/AlertButton";
 import GlobalThemeProvider from "../../assets/styles/GlobalThemeProvider";
-import Wheather from "../../components/Main/Wheather";
 
 export default {
-  title: "Component/Main/Wheather",
-  component: Wheather,
+  title: "Component/UI/AlertButton",
+  component: AlertButton,
 };
 
 export const Default = () => {
   return (
     <GlobalThemeProvider>
-      <Wheather />
+      <AlertButton />
     </GlobalThemeProvider>
   );
 };
