@@ -17,9 +17,15 @@ const fontSize = {
   p_h5: "10px",
 };
 
+const btnFontSize = {
+  "btn_font_size--sm": "12px",
+  "btn_font_size--lg": "20px",
+};
+
 const theme: Theme = {
   palette,
   fontSize,
+  btnFontSize,
 };
 
 export default theme;
