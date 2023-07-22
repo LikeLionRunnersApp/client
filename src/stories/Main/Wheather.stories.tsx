@@ -1,5 +1,5 @@
-import GlobalThemeProvider from "../../assets/styles/GlobalThemeProvider";
-import Wheather from "../../components/Main/Wheather";
+import GlobalThemeProvider from "@assets/styles/GlobalThemeProvider";
+import Wheather from "@components/Main/Wheather";
 
 export default {
   title: "Component/Main/Wheather",

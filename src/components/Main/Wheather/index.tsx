@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import theme from "../../../assets/styles/theme";
-import useDate from "../../../hooks/useDate";
+import theme from "@assets/styles/theme";
+import useDate from "@hooks/useDate";
 import styled from "@emotion/styled";
 
 interface Params {

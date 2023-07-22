@@ -1,5 +1,5 @@
-import Date from "../../components/Main/Date";
-import GlobalThemeProvider from "../../assets/styles/GlobalThemeProvider";
+import Date from "@components/Main/Date";
+import GlobalThemeProvider from "@assets/styles/GlobalThemeProvider";
 
 export default {
   title: "Component/Main/Date",

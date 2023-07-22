@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import theme from "../../../assets/styles/theme";
-import useDate from "../../../hooks/useDate";
+import theme from "@assets/styles/theme";
+import useDate from "@hooks/useDate";
 
 interface TodayDateProps {
   color: keyof typeof theme.palette;
