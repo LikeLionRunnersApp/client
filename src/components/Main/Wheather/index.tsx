@@ -3,6 +3,7 @@ import axios from "axios";
 import theme from "@assets/styles/theme";
 import useDate from "@hooks/useDate";
 import styled from "@emotion/styled";
+import { Wheathers } from "@assets/images/wheather/index";
 
 interface Params {
   serviceKey: string;
@@ -21,6 +22,7 @@ interface WheatherProps {
 
 const Wheather = () => {
   const [wheather, setWheather] = useState("");
+  const [wheatherImage, setWheatherImage] = useState("");
 
   const todayDate = useDate();
 
@@ -33,14 +35,19 @@ const Wheather = () => {
   const handleTodayWheather = (PTY: number, SKY: number) => {
     if (PTY === 1) {
       setWheather("비!");
+      setWheatherImage(Wheathers["rain"]);
     } else if (PTY === 3) {
       setWheather("눈!");
+      setWheatherImage(Wheathers["snow"]);
     } else if (PTY === 0 && SKY >= 0 && SKY <= 5) {
       setWheather("맑음!");
+      setWheatherImage(Wheathers["sun"]);
     } else if (PTY === 0 && SKY >= 6 && SKY <= 8) {
       setWheather("구름 많음!");
+      setWheatherImage(Wheathers["cloud"]);
     } else if (PTY === 0 && SKY >= 9 && SKY <= 10) {
       setWheather("흐림!");
+      setWheatherImage(Wheathers["blur"]);
     }
   };
 
@@ -77,7 +84,9 @@ const Wheather = () => {
         <dt>오늘의 날씨</dt>
         <dd>{wheather}</dd>
       </WheatherContent>
-      <WheatherImage>이미지</WheatherImage>
+      <WheatherImage>
+        <img src={wheatherImage} alt={wheather} />
+      </WheatherImage>
     </WheatherContainer>
   );
 };
