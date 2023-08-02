@@ -4,7 +4,7 @@ interface Props {
   type: "interval" | "run" | "work";
 }
 
-const flagType = {
+export const flagType = {
   interval: {
     content: "인터벌",
     color: "#FFC573",

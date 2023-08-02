@@ -5,7 +5,7 @@ interface Props {
   name: string;
   width?: string;
   height?: string;
-  on: boolean;
+  on?: boolean;
   onClick?: () => {};
 }
 

@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import styled from "@emotion/styled";
 
 import Carousel from "react-material-ui-carousel";
-import SlideItem from "../SlideItem";
+import SlideItem from "./SlideItem";
 
 const items = [
   {
