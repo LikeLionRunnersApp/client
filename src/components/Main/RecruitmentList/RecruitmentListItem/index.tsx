@@ -121,7 +121,8 @@ const Header = styled.div`
 const Detail = styled.dl<{ icon: IListIcon }>`
   opacity: 50%;
   font-size: 9px;
-
+  margin: 0;
+  
   dt {
     position: absolute;
     overflow: hidden;
