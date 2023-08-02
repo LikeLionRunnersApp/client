@@ -4,14 +4,22 @@ import theme from "@assets/styles/theme";
 
 interface Props {
   type: "button" | "submit";
+  variant: "participation" | "complete" | "start";
   size: "sm" | "lg";
   children: ReactNode;
   onClick?: () => {};
 }
 
-const Button = ({ type, size, onClick, children, ...props }: Props) => {
+const Button = ({
+  type,
+  variant,
+  size,
+  onClick,
+  children,
+  ...props
+}: Props) => {
   return (
-    <ButtonContainer type={type} size={size}>
+    <ButtonContainer type={type} size={size} variant={variant}>
       {children}
     </ButtonContainer>
   );
@@ -19,10 +27,15 @@ const Button = ({ type, size, onClick, children, ...props }: Props) => {
 
 export default Button;
 
-const ButtonContainer = styled.button<{ size: string }>`
+const ButtonContainer = styled.button<{ size: string; variant: string }>`
   border: none;
   padding: ${({ size }) => (size === "lg" ? "8px 104px" : "5px 11px")};
-  background-color: black;
+  background-color: ${({ variant }) =>
+    variant === "participation"
+      ? "black"
+      : variant === "complete"
+      ? "#989491"
+      : "#FF9704"};
   font-size: 700;
   border-radius: 12px;
   color: #fff;

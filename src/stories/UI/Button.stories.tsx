@@ -5,13 +5,13 @@ export default {
   component: Button,
   argTypes: {
     size: { control: "radio", options: ["sm", "lg"] },
+    variant: {
+      control: "radio",
+      options: ["participation", "complete", "start"],
+    },
   },
 };
 
 export const Default = (args: any) => {
-  return (
-    <Button {...args} type="button">
-      참여하기
-    </Button>
-  );
+  return <Button {...args}>참여하기</Button>;
 };
