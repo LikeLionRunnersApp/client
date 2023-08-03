@@ -18,5 +18,5 @@ const Container = styled.div`
   transform: translateX(-50%);
   width: 375px;
   height: 100vh;
-  border: 1px solid #d9d9d9;
+  background-color: #fff;
 `;

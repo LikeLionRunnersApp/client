@@ -14,6 +14,7 @@ const GlobalStyle = css`
   body {
     font-family: "Pretendard", sans-serif;
     padding: 0 !important;
+    background-color: #d9d9d9;
   }
 
   html,
