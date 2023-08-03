@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import GlobalThemeProvider from "@assets/styles/GlobalThemeProvider";
 import axios from "axios";
 import theme from "@assets/styles/theme";
 import useDate from "@hooks/useDate";
@@ -79,15 +80,17 @@ const Wheather = () => {
   }, []);
 
   return (
-    <WheatherContainer color="yellow">
-      <WheatherContent>
-        <dt>오늘의 날씨</dt>
-        <dd>{wheather}</dd>
-      </WheatherContent>
-      <WheatherImage>
-        <img src={wheatherImage} alt={wheather} />
-      </WheatherImage>
-    </WheatherContainer>
+    <GlobalThemeProvider>
+      <WheatherContainer color="yellow">
+        <WheatherContent>
+          <dt>오늘의 날씨</dt>
+          <dd>{wheather}</dd>
+        </WheatherContent>
+        <WheatherImage>
+          <img src={wheatherImage} alt={wheather} />
+        </WheatherImage>
+      </WheatherContainer>
+    </GlobalThemeProvider>
   );
 };
 

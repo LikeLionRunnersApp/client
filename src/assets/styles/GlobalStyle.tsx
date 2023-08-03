@@ -15,6 +15,7 @@ const GlobalStyle = css`
     font-family: "Pretendard", sans-serif;
     padding: 0 !important;
     background-color: #d9d9d9;
+    user-select: none;
   }
 
   html,
@@ -111,7 +112,7 @@ const GlobalStyle = css`
   body,
   #root,
   .Section__container___3YYTG {
-    height: 100%;
+    height: 100vh;
   }
 
   /* HTML5 display-role reset for older browsers */

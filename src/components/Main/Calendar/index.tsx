@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useState } from "react";
 
 const moveDayToFront = () => {
   const daysOfWeek = ["월", "화", "수", "목", "금", "토", "일"];
@@ -31,23 +32,33 @@ const sevenDays = () => {
 };
 
 const Calendar = () => {
+  const [index, setIndex] = useState(0);
   const shiftedDaysOfWeek = moveDayToFront();
   const nextSevenDays = sevenDays();
 
   let weekCalendar = [];
   for (let i = 0; i < 7; i++) {
     const item = {
+      idx: i,
       week: shiftedDaysOfWeek[i],
       day: nextSevenDays[i],
     };
     weekCalendar.push(item);
   }
 
+  const clickCalendarHandler = (idx: number) => {
+    setIndex(idx);
+  };
+
   return (
     <Container>
       {weekCalendar.map((week) => (
         <>
-          <Week>
+          <Week
+            key={week.idx}
+            onClick={() => clickCalendarHandler(week.idx)}
+            index={index}
+          >
             <dt>{week.week}</dt>
             <dd>{week.day}</dd>
           </Week>
@@ -60,25 +71,33 @@ const Calendar = () => {
 export default Calendar;
 
 const Container = styled.dl`
+  padding: 0px 12px;
   font-family: "JGaegujaengyi-Medium-KO";
   margin: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 16px;
 
   dt {
     margin-bottom: 8px;
   }
-  
+
   dd {
     margin: 0;
   }
 `;
 
-const Week = styled.div`
+const Week = styled.div<{ index: number }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   opacity: 0.5;
+  cursor: pointer;
+
+  &:nth-of-type(${({ index }) => index + 1}) {
+    opacity: 100%;
+    font-weight: 700;
+  }
 `;

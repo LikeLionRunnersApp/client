@@ -6,35 +6,14 @@ import Flag from "@components/Common/UI/Flag";
 import Icon from "@components/Common/UI/Icon";
 import Button from "@components/Common/UI/Button";
 import { useState } from "react";
+import { IListItem } from "..";
 
-interface IListItem {
-  flag: "interval" | "run" | "work";
-  image: string;
-  title: string;
-  limit: number;
-  participation: number;
-  play_time: number;
-  location: string;
-  date: string;
-  time: string;
-  status: "start" | "participation" | "complete";
+interface Props {
+  item: IListItem;
 }
 
-const RecruitmentListItem = () => {
+const RecruitmentListItem = ({ item }: Props) => {
   const [cheering, setCheering] = useState(false);
-
-  const listItem: IListItem = {
-    flag: "interval",
-    image: "",
-    title: "뉴비 환영!! 아기사자 모여라",
-    limit: 6,
-    participation: 3,
-    play_time: 40,
-    location: "장대동 학사마을 다리 밑",
-    date: "2023-07-04",
-    time: "22:00",
-    status: "start",
-  };
 
   const handleClickCheeringButton = () => {
     setCheering((prev) => !prev);
@@ -47,34 +26,34 @@ const RecruitmentListItem = () => {
         <Icon name="cheering" />
       </IconContainer>
       <ButtonContainer>
-        <Button type="button" variant={listItem.status} size="sm">
-          {listItem.status === "start"
+        <Button type="button" variant={item.status} size="sm">
+          {item.status === "start"
             ? "시작하기"
-            : listItem.status === "participation"
+            : item.status === "participation"
             ? "참여하기"
             : "신청완료"}
         </Button>
       </ButtonContainer>
       <ImageContainer>
-        <img src={listItem.image} alt={listItem.title} />
+        <img src={item.image} alt={item.title} />
       </ImageContainer>
       <ContentContainer>
         <Header>
-          <Flag type={listItem.flag} />
+          <Flag type={item.flag} />
           <h1>뉴비 환영!! 아기사자 모여라</h1>
         </Header>
         <Detail icon={ListIcon}>
           <dt>personnel</dt>
           <dd>
-            {listItem.participation}/{listItem.limit}
+            {item.participation}/{item.limit}
           </dd>
           <dt>time</dt>
-          <dd>{listItem.play_time}min</dd>
+          <dd>{item.play_time}min</dd>
           <dt>location</dt>
-          <dd>{listItem.location}</dd>
+          <dd>{item.location}</dd>
           <dt>date</dt>
           <dd>
-            {listItem.date} / pm {listItem.time}
+            {item.date} / pm {item.time}
           </dd>
         </Detail>
       </ContentContainer>
@@ -85,12 +64,17 @@ const RecruitmentListItem = () => {
 export default RecruitmentListItem;
 
 const Container = styled.div`
-  width: 327px;
+  width: 100%;
   padding: 8px;
   position: relative;
   display: flex;
   background-color: #fff;
   border-radius: 8px;
+  margin-bottom: 12px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 `;
 
 const IconContainer = styled.div`
@@ -122,7 +106,7 @@ const Detail = styled.dl<{ icon: IListIcon }>`
   opacity: 50%;
   font-size: 9px;
   margin: 0;
-  
+
   dt {
     position: absolute;
     overflow: hidden;

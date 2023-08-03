@@ -27,6 +27,7 @@ const ItemContainer = styled.div`
   background-color: #ff9704;
   border-radius: 8px;
   padding: 12px 16px;
+  cursor: grab;
 `;
 
 const Title = styled.h2`

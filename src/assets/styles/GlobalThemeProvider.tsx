@@ -1,10 +1,11 @@
-import { ThemeProvider, Global } from '@emotion/react'
-import theme from './theme'
-import GlobalStyle from './GlobalStyle'
-import { ReactNode } from 'react'
+import { ThemeProvider, Global } from "@emotion/react";
+import theme from "./theme";
+import GlobalStyle from "./GlobalStyle";
+
+import { ReactNode } from "react";
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
 function GlobalThemeProvider({ children }: Props) {
@@ -13,7 +14,7 @@ function GlobalThemeProvider({ children }: Props) {
       <Global styles={GlobalStyle} />
       {children}
     </ThemeProvider>
-  )
+  );
 }
 
-export default GlobalThemeProvider
+export default GlobalThemeProvider;
