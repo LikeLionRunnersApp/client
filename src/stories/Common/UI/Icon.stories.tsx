@@ -2,7 +2,7 @@ import GlobalThemeProvider from "@assets/styles/GlobalThemeProvider";
 import Icon from "@components/Common/UI/Icon";
 
 export default {
-  title: "Component/UI/Icon",
+  title: "Component/Common/UI/Icon",
   component: Icon,
   argTypes: {
     name: {

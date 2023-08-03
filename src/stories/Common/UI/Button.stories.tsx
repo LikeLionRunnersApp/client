@@ -1,7 +1,7 @@
 import Button from "@components/Common/UI/Button";
 
 export default {
-  title: "Component/UI/Button",
+  title: "Component/Common/UI/Button",
   component: Button,
   argTypes: {
     size: { control: "radio", options: ["sm", "lg"] },

@@ -1,7 +1,7 @@
 import Flag from "@components/Common/UI/Flag";
 
 export default {
-  title: "Component/UI/Flag",
+  title: "Component/Common/UI/Flag",
   component: Flag,
   argsType: {
     type: { control: "radio", option: ["interval", "run", "work"] },
