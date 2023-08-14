@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import useDate from "@hooks/useDate";
 import { useState } from "react";
 
 const moveDayToFront = () => {
@@ -31,10 +32,15 @@ const sevenDays = () => {
   return days;
 };
 
-const Calendar = () => {
+interface Props {
+  onGetAsync(currentDate: string): void;
+}
+
+const Calendar = ({ onGetAsync }: Props) => {
   const [index, setIndex] = useState(0);
   const shiftedDaysOfWeek = moveDayToFront();
   const nextSevenDays = sevenDays();
+  const [year, formattedMonth] = useDate();
 
   let weekCalendar = [];
   for (let i = 0; i < 7; i++) {
@@ -46,7 +52,8 @@ const Calendar = () => {
     weekCalendar.push(item);
   }
 
-  const clickCalendarHandler = (idx: number) => {
+  const clickCalendarHandler = (idx: number, day: string) => {
+    onGetAsync(`${year}-${formattedMonth}-${day}`);
     setIndex(idx);
   };
 
@@ -56,7 +63,7 @@ const Calendar = () => {
         <>
           <Week
             key={week.idx}
-            onClick={() => clickCalendarHandler(week.idx)}
+            onClick={() => clickCalendarHandler(week.idx, week.day)}
             index={index}
           >
             <dt>{week.week}</dt>

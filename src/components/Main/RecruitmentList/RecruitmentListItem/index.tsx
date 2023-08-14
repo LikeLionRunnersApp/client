@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import styled from "@emotion/styled";
 
 import { IListIcon, ListIcon } from "@assets/images/ListIcon";
@@ -5,14 +7,15 @@ import { IListIcon, ListIcon } from "@assets/images/ListIcon";
 import Flag from "@components/Common/UI/Flag";
 import Icon from "@components/Common/UI/Icon";
 import Button from "@components/Common/UI/Button";
-import { useState } from "react";
-import { IListItem } from "..";
+
+import { IWeeks } from "@pages/Main";
 
 interface Props {
-  item: IListItem;
+  week: IWeeks;
+  date: string;
 }
 
-const RecruitmentListItem = ({ item }: Props) => {
+const RecruitmentListItem = ({ week, date }: Props) => {
   const [cheering, setCheering] = useState(false);
 
   const handleClickCheeringButton = () => {
@@ -26,34 +29,34 @@ const RecruitmentListItem = ({ item }: Props) => {
         <Icon name="cheering" />
       </IconContainer>
       <ButtonContainer>
-        <Button type="button" variant={item.status} size="sm">
-          {item.status === "start"
+        <Button type="button" variant={week.status} size="sm">
+          {week.status === "start"
             ? "시작하기"
-            : item.status === "participation"
+            : week.status === "participation"
             ? "참여하기"
             : "신청완료"}
         </Button>
       </ButtonContainer>
       <ImageContainer>
-        <img src={item.image} alt={item.title} />
+        <img src={week.image} alt={week.title} />
       </ImageContainer>
       <ContentContainer>
         <Header>
-          <Flag type={item.flag} />
+          <Flag type={week.flag} />
           <h1>뉴비 환영!! 아기사자 모여라</h1>
         </Header>
         <Detail icon={ListIcon}>
           <dt>personnel</dt>
           <dd>
-            {item.participation}/{item.limit}
+            {week.joinMember}/{week.totalMember}
           </dd>
           <dt>time</dt>
-          <dd>{item.play_time}min</dd>
+          <dd>{week.play_time}min</dd>
           <dt>location</dt>
-          <dd>{item.location}</dd>
+          <dd>{week.location}</dd>
           <dt>date</dt>
           <dd>
-            {item.date} / pm {item.time}
+            {date} / pm {week.time}
           </dd>
         </Detail>
       </ContentContainer>

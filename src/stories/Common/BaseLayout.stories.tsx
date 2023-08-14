@@ -1,15 +1,15 @@
 import GlobalThemeProvider from "@assets/styles/GlobalThemeProvider";
-import Container from "@components/Common/Container";
+import { BaseLayout } from "@components/Common";
 
 export default {
   title: "Component/Common/BaseLayout",
-  component: Container,
+  component: BaseLayout,
 };
 
 export const Default = (args: any) => {
   return (
     <GlobalThemeProvider>
-      <Container {...args} />
+      <BaseLayout {...args} />
     </GlobalThemeProvider>
   );
 };
