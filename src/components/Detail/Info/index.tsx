@@ -1,13 +1,20 @@
 import styled from "@emotion/styled";
+
 import DetailInfo from "./DetailInfo";
+import DetailDescription from "./DetailDescription";
 
 const Info = () => {
   return (
-    <div>
+    <Container>
       <DetailInfo />
-      <p>어쩌구 저쩌구 같이해요~</p>
-    </div>
+      <DetailDescription />
+    </Container>
   );
 };
+
+const Container = styled.div`
+  margin-top: 11px;
+  margin-bottom: 16px;
+`;
 
 export default Info;
