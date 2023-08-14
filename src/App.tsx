@@ -1,11 +1,13 @@
 import Main from "@pages/Main";
 import Detail from "@pages/Detail";
+import { Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <>
-      <Detail />
-    </>
+    <Routes>
+      <Route path="/" element={<Main />} />
+      <Route path="/detail/:id" element={<Detail />} />
+    </Routes>
   );
 };
 
