@@ -1,7 +1,9 @@
 import { BaseLayout } from "@components/Common";
+import { Container } from "@components/Common";
 import Title from "@components/Detail/Title";
 import Info from "@components/Detail/Info";
-import { Container } from "@components/Common";
+import Host from "@components/Detail/Host";
+import Join from "@components/Detail/Join";
 
 import styled from "@emotion/styled";
 
@@ -34,6 +36,8 @@ const Detail = () => {
         <Container>
           <Info />
         </Container>
+        <Host />
+        <Join />
       </Main>
     </BaseLayout>
   );
