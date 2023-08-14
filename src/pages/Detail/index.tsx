@@ -4,6 +4,7 @@ import Title from "@components/Detail/Title";
 import Info from "@components/Detail/Info";
 import Host from "@components/Detail/Host";
 import Join from "@components/Detail/Join";
+import FooterBar from "@components/Detail/FooterBar";
 
 import styled from "@emotion/styled";
 
@@ -38,6 +39,7 @@ const Detail = () => {
         </Container>
         <Host />
         <Join />
+        <FooterBar />
       </Main>
     </BaseLayout>
   );

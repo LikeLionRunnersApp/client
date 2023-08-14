@@ -36,7 +36,8 @@ const ButtonContainer = styled.button<{ size: string; variant: string }>`
       : variant === "complete"
       ? "#989491"
       : "#FF9704"};
-  font-size: 700;
+  font-weight: 700;
+  font-size: ${({ size }) => (size === "sm" ? "12px" : "20px")};
   border-radius: 12px;
   color: #fff;
   cursor: pointer;
