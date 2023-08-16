@@ -6,7 +6,10 @@ const FooterBar = () => {
   return (
     <FooterBarContainer>
       <Container>
-        <Icon name="lgClickCheering" />
+        <CheeringButton>
+          <Icon name="lgClickCheering" />
+          <Count>12</Count>
+        </CheeringButton>
         <Button type="button" variant="participation" size="lg">
           참여하기
         </Button>
@@ -18,6 +21,19 @@ const FooterBar = () => {
 const FooterBarContainer = styled.div`
   position: fixed;
   bottom: 0;
+`;
+
+const CheeringButton = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-right: 9px;
+  align-items: center;
+`;
+
+const Count = styled.strong`
+  position: relative;
+  top: -8px;
+  color: #ff9704;
 `;
 
 const Container = styled.div`
