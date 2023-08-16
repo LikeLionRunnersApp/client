@@ -7,7 +7,17 @@ export default {
   argTypes: {
     name: {
       control: "radio",
-      options: ["alert", "hamberger", "edit", "share", "cheering", "prev"],
+      options: [
+        "alert",
+        "hamberger",
+        "edit",
+        "share",
+        "prev",
+        "sm-default-cheering",
+        "sm-click-cheering",
+        "lg-default-cheering",
+        "lg-click-cheering",
+      ],
     },
     on: {
       control: "boolean",

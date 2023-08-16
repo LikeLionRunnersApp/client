@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
 import { Button } from "@components/Common/UI";
+import { Icon } from "@components/Common/UI";
 
 const FooterBar = () => {
   return (
     <FooterBarContainer>
       <Container>
+        <Icon name="lgClickCheering" />
         <Button type="button" variant="participation" size="lg">
           참여하기
         </Button>

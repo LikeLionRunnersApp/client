@@ -26,7 +26,7 @@ const RecruitmentListItem = ({ week, date }: Props) => {
   return (
     <Container>
       <IconContainer onClick={handleClickCheeringButton}>
-        <Icon name="cheering" />
+        <Icon name="smDefaultCheering" />
       </IconContainer>
       <ButtonContainer>
         <Button type="button" variant={week.status} size="sm">
