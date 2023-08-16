@@ -1,5 +1,7 @@
 import { BaseLayout } from "@components/Common";
 import { Container } from "@components/Common";
+
+import HeaderBar from "@components/Detail/HeaderBar";
 import Title from "@components/Detail/Title";
 import Info from "@components/Detail/Info";
 import Host from "@components/Detail/Host";
@@ -13,7 +15,7 @@ export interface ITitle {
   title: string;
 }
 
-export interface IInfo {
+export interface IInfo extends ITitle {
   totalMember: string;
   joinMember: string;
   location: string;
@@ -30,6 +32,7 @@ const Detail = () => {
     <BaseLayout>
       <Header>
         <Container>
+          <HeaderBar />
           <Title />
         </Container>
       </Header>
