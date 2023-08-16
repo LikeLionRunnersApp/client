@@ -38,7 +38,7 @@ const ButtonContainer = styled.button<{ size: string; variant: string }>`
       : "#FF9704"};
   font-weight: 700;
   font-size: ${({ size }) => (size === "sm" ? "12px" : "20px")};
-  border-radius: 12px;
+  border-radius: ${({ size }) => (size === "sm" ? "12px" : "32px")};
   color: #fff;
   cursor: pointer;
   transition: all 0.15s ease-out;
