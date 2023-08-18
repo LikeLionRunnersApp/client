@@ -1,44 +1,52 @@
-import React, { ReactNode } from "react";
-import styled from "@emotion/styled";
-import theme from "@assets/styles/theme";
+import React, { ReactNode } from 'react'
+import styled from '@emotion/styled'
+import theme from '@assets/styles/theme'
 
 interface Props {
-  type: "button" | "submit";
-  variant: "participation" | "complete" | "start";
-  size: "sm" | "lg";
-  children: ReactNode;
-  onClick?: () => {};
+  type: 'button' | 'submit'
+  variant: 'participation' | 'complete' | 'start' | 'login'
+  color?: string
+  size: 'sm' | 'lg'
+  children: ReactNode
+  onClick?: () => {}
 }
 
 const Button = ({
   type,
   variant,
   size,
+  color,
   onClick,
   children,
   ...props
 }: Props) => {
   return (
-    <ButtonContainer type={type} size={size} variant={variant}>
+    <ButtonContainer type={type} size={size} variant={variant} color={color}>
       {children}
     </ButtonContainer>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button
 
-const ButtonContainer = styled.button<{ size: string; variant: string }>`
+const ButtonContainer = styled.button<{
+  size: string
+  variant: string
+  color?: string
+}>`
   border: none;
-  padding: ${({ size }) => (size === "lg" ? "8px 104px" : "5px 11px")};
+  padding: ${({ size }) => (size === 'lg' ? '8px 104px' : '5px 11px')};
   background-color: ${({ variant }) =>
-    variant === "participation"
-      ? "black"
-      : variant === "complete"
-      ? "#989491"
-      : "#FF9704"};
+    variant === 'participation'
+      ? 'black'
+      : variant === 'complete'
+      ? '#989491'
+      : variant === 'login'
+      ? '#D9D9D9'
+      : '#FF9704'};
   font-weight: 700;
-  font-size: ${({ size }) => (size === "sm" ? "12px" : "20px")};
-  border-radius: ${({ size }) => (size === "sm" ? "12px" : "32px")};
+  font-size: ${({ size }) => (size === 'sm' ? '12px' : '20px')};
+  border-radius: ${({ size }) => (size === 'sm' ? '12px' : '32px')};
   color: #fff;
   cursor: pointer;
   transition: all 0.15s ease-out;
@@ -51,4 +59,4 @@ const ButtonContainer = styled.button<{ size: string; variant: string }>`
     box-shadow: none;
     background-color: #ff9704;
   }
-`;
+`
