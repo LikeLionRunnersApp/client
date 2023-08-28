@@ -1,12 +1,11 @@
 import { BaseLayout } from "@components/Common";
 import { Container } from "@components/Common";
-import LoginHeader from "@components/Login/LoginHeader";
-import Form from "@components/Login/Form";
-import Navigate from "@components/Login/Navigate";
-import SocialLogin from "@components/Login/SocialLogin";
-import styled from "@emotion/styled";
+import LoginHeader from "@components/SignIn/LoginHeader";
+import Form from "@components/SignIn/Form";
+import Navigate from "@components/SignIn/Navigate";
+import SocialLogin from "@components/SignIn/SocialLogin";
 
-const Login = () => {
+const SignIn = () => {
   return (
     <BaseLayout>
       <Container>
@@ -19,4 +18,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignIn;
