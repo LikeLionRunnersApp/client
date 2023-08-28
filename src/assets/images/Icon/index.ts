@@ -7,6 +7,7 @@ import smClickCheering from "./sm-click-cheeringIcon.svg";
 import lgDefaultCheering from "./lg-default-cheeringIcon.svg";
 import lgClickCheering from "./lg-click-cheeringIcon.svg";
 import prev from "./prevIcon.svg";
+import kakao from "./kakao.svg";
 
 interface IIcons {
   [key: string]: string;
@@ -22,4 +23,5 @@ export const Icons: IIcons = {
   lgDefaultCheering,
   lgClickCheering,
   prev,
+  kakao,
 };

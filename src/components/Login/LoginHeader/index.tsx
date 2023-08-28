@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import cloud from "@assets/images/Login/cloud.png";
+
 const LoginHeader = () => {
   return (
     <HeaderContainer>
@@ -26,18 +27,16 @@ const HeaderContainer = styled.header`
 
   & img {
     position: absolute;
-  } 
+  }
 
   & img:first-of-type {
-    top: 0;
-    left: 0;
-    top: 81px;
-    /* left: 192px;  */
+    top: 20px;
+    left: 172px;
   }
 
   & img:nth-of-type(2) {
-    top: 181px;
-    left: 327px;
+    top: 151px;
+    left: 310px;
   }
 `;
 
