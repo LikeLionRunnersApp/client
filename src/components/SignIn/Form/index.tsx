@@ -26,7 +26,6 @@ const Form = () => {
   return (
     <Container onSubmit={handleSubmit}>
       <Alert>{alert}</Alert>
-      <Label htmlFor="email">이메일</Label>
       <FormInput
         type="text"
         id="email"
@@ -34,8 +33,9 @@ const Form = () => {
         onChange={e => handleEmailChange(e.target.value)}
         value={email}
         placeholder="이메일을 입력해주세요"
+        hidden={true}
+        label="이메일"
       />
-      <Label htmlFor="password">비밀번호</Label>
       <FormInput
         type="password"
         name="password"
@@ -43,7 +43,9 @@ const Form = () => {
         onChange={e => handlePasswordChange(e.target.value)}
         value={password}
         placeholder="비밀번호를 입력해주세요"
-      />  
+        hidden={true}
+        label="비밀번호"
+      />
       <Button type="submit" variant={validate ? 'start' : 'login'} size="lg">
         로그인하기
       </Button>

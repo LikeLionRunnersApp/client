@@ -7,6 +7,8 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   onChange(e: ChangeEvent<HTMLInputElement>): void
   value: string
   placeholder: string
+  hidden: boolean
+  label: string
 }
 
 const FormInput = ({
@@ -16,21 +18,39 @@ const FormInput = ({
   onChange,
   value,
   placeholder,
+  hidden,
+  label,
   ...props
 }: Props) => {
   return (
-    <FormInputContainer
-      type={type}
-      name={name}
-      onChange={onChange}
-      value={value}
-      placeholder={placeholder}
-      {...props}
-    />
+    <>
+      <Label htmlFor={id} hidden={hidden}>
+        {label}
+      </Label>
+      <FormInputContainer
+        type={type}
+        name={name}
+        onChange={onChange}
+        value={value}
+        placeholder={placeholder}
+        {...props}
+      />
+    </>
   )
 }
 
 export default FormInput
+
+const Label = styled.label<{ hidden: boolean }>`
+  ${({ hidden }) =>
+    hidden &&
+    `position: absolute;
+  z-index: -100;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;`}
+`
 
 const FormInputContainer = styled.input`
   display: block;
