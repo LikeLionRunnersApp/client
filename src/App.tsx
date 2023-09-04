@@ -1,16 +1,7 @@
-import Main from "@pages/Main";
-import Detail from "@pages/Detail";
-import SignIn from "@pages/Login";
-import { Routes, Route } from "react-router-dom";
+import Router from './routes/Router'
 
 const App = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Main />} />
-      <Route path="/detail/:id" element={<Detail />} />
-      <Route path="/signin" element={<SignIn />} />
-    </Routes>
-  );
-};
+  return <Router />
+}
 
-export default App;
+export default App

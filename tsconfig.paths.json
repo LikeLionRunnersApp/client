@@ -5,7 +5,8 @@
       "@hooks/*": ["./hooks/*"],
       "@components/*": ["./components/*"],
       "@assets/*": ["./assets/*"],
-      "@pages/*": ["./pages/*"]
+      "@pages/*": ["./pages/*"],
+      "@reoutes/*": ["./routes/*"]
     }
   }
 }
