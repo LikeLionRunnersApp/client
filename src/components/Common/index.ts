@@ -1,4 +1,4 @@
 import BaseLayout from "./BaseLayout";
-import Container from "./Container";
+import Container from "./Conatiner";
 
 export { BaseLayout, Container };

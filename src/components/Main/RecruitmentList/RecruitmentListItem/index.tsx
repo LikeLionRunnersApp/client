@@ -1,27 +1,27 @@
-import { useState } from "react";
+import { useState } from 'react'
 
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
-import { IListIcon, ListIcon } from "@assets/images/ListIcon";
+import { IListIcon, ListIcon } from '@assets/images/ListIcon'
 
-import Flag from "@components/Common/UI/Flag";
-import Icon from "@components/Common/UI/Icon";
-import Button from "@components/Common/UI/Button";
+import Flag from '@components/Common/UI/Flag'
+import { Icon } from '@components/Common/UI'
+import Button from '@components/Common/UI/Button'
 
-import { IWeeks } from "@pages/Main";
+import { IWeeks } from '@pages/Main'
 
 interface Props {
-  week: IWeeks;
-  date: string;
+  week: IWeeks
+  date: string
 }
 
 const RecruitmentListItem = ({ week, date }: Props) => {
-  const [cheering, setCheering] = useState(false);
+  const [cheering, setCheering] = useState(false)
 
   const handleClickCheeringButton = () => {
-    setCheering((prev) => !prev);
-    console.log(cheering);
-  };
+    setCheering(prev => !prev)
+    console.log(cheering)
+  }
 
   return (
     <Container>
@@ -30,11 +30,11 @@ const RecruitmentListItem = ({ week, date }: Props) => {
       </IconContainer>
       <ButtonContainer>
         <Button type="button" variant={week.status} size="sm">
-          {week.status === "start"
-            ? "시작하기"
-            : week.status === "participation"
-            ? "참여하기"
-            : "신청완료"}
+          {week.status === 'start'
+            ? '시작하기'
+            : week.status === 'participation'
+            ? '참여하기'
+            : '신청완료'}
         </Button>
       </ButtonContainer>
       <ImageContainer>
@@ -61,10 +61,10 @@ const RecruitmentListItem = ({ week, date }: Props) => {
         </Detail>
       </ContentContainer>
     </Container>
-  );
-};
+  )
+}
 
-export default RecruitmentListItem;
+export default RecruitmentListItem
 
 const Container = styled.div`
   width: 100%;
@@ -78,13 +78,13 @@ const Container = styled.div`
   &:last-of-type {
     margin-bottom: 0;
   }
-`;
+`
 
 const IconContainer = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-`;
+`
 
 const ImageContainer = styled.div`
   height: 96px;
@@ -92,9 +92,9 @@ const ImageContainer = styled.div`
   background-color: #d9d9d9;
   border-radius: 6px;
   margin-right: 8px;
-`;
+`
 
-const ContentContainer = styled.div``;
+const ContentContainer = styled.div``
 
 const Header = styled.div`
   h1 {
@@ -103,7 +103,7 @@ const Header = styled.div`
     margin-top: 4px;
   }
   margin-bottom: 10px;
-`;
+`
 
 const Detail = styled.dl<{ icon: IListIcon }>`
   opacity: 50%;
@@ -134,7 +134,7 @@ const Detail = styled.dl<{ icon: IListIcon }>`
 
   dd::before {
     display: inline-block;
-    content: "";
+    content: '';
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -155,24 +155,24 @@ const Detail = styled.dl<{ icon: IListIcon }>`
   }
 
   dd:first-of-type:before {
-    background-image: url(${({ icon }) => icon["personnel"]});
+    background-image: url(${({ icon }) => icon['personnel']});
   }
 
   dd:nth-of-type(2):before {
-    background-image: url(${({ icon }) => icon["time"]});
+    background-image: url(${({ icon }) => icon['time']});
   }
 
   dd:nth-of-type(3):before {
-    background-image: url(${({ icon }) => icon["location"]});
+    background-image: url(${({ icon }) => icon['location']});
   }
 
   dd:last-of-type:before {
-    background-image: url(${({ icon }) => icon["date"]});
+    background-image: url(${({ icon }) => icon['date']});
   }
-`;
+`
 
 const ButtonContainer = styled.div`
   position: absolute;
   right: 8px;
   bottom: 8px;
-`;
+`

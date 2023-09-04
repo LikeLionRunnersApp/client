@@ -1,18 +1,18 @@
-import styled from "@emotion/styled";
-import Button from "@components/Common/UI/Button";
-import { Icons } from "@assets/images/Icon";
+import styled from '@emotion/styled'
+import Button from '@components/Common/UI/Button'
+import { Icons } from '@assets/images/Icon'
 
 const SocialLogin = () => {
   return (
     <div>
       <Title>간편로그인</Title>
       <Button type="button" variant="socialLogin" size="lg" color="black">
-        <img src={Icons["kakao"]} alt="kakao" />
+        <img src={Icons['kakao']} alt="kakao" />
         카카오톡 로그인
       </Button>
     </div>
-  );
-};
+  )
+}
 
 const Title = styled.h2`
   display: flex;
@@ -24,7 +24,7 @@ const Title = styled.h2`
 
   &::before {
     display: block;
-    content: "";
+    content: '';
     width: 88px;
     background-color: #d9d9d9;
     height: 1px;
@@ -32,11 +32,11 @@ const Title = styled.h2`
 
   &::after {
     display: block;
-    content: "";
+    content: '';
     width: 88px;
     background-color: #d9d9d9;
     height: 1px;
   }
-`;
+`
 
-export default SocialLogin;
+export default SocialLogin
