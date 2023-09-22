@@ -10,12 +10,24 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
+    "types": ["vite/client"],
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@api/*": ["src/api/*"],
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@pages/*": ["src/pages/*"],
+      "@router/*": ["src/router/*"],
+      "@stories/*": ["src/stories/*"],
+      "@types/*": ["src/types/*"]
+    }
   },
-  "include": ["src", "custom.d.ts"],
-  "extends": "./tsconfig.paths.json"
+  "include": ["src", "custom.d.ts"]
 }
