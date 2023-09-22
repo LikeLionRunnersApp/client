@@ -6,6 +6,7 @@ import Home from '@pages/Home'
 import KakaoCallback from '@components/SignIn/KakaoCallback'
 import LoginCredentialsInput from '@components/SignUp/LoginCredentialsInput'
 import UserProfileInput from '@components/SignUp/UserProfileInput'
+import Success from '@components/SignUp/Success'
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
       <Route path="/signup" element={<SignUp />}>
         <Route path="1" element={<LoginCredentialsInput />} />
         <Route path="2" element={<UserProfileInput />} />
+        <Route path="3" element={<Success />} />
       </Route>
       <Route path="/kakaologin/redirect" element={<KakaoCallback />} />
     </Routes>
