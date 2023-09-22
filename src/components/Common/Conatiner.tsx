@@ -1,16 +1,16 @@
-import styled from "@emotion/styled";
-import { ReactNode } from "react";
+import styled from '@emotion/styled'
+import { ReactNode } from 'react'
 
 interface Props {
-  children: ReactNode;
+  children: ReactNode
 }
 
 const Container = ({ children }: Props) => {
-  return <Div>{children}</Div>;
-};
+  return <Div>{children}</Div>
+}
 
-export default Container;
+export default Container
 
 const Div = styled.div`
   padding: 0 16px;
-`;
+`

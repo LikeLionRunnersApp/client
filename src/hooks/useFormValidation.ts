@@ -1,57 +1,88 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback } from 'react'
 
 interface Props {
-  initialEmail: string;
-  initialPassword: string;
+  initialMemberId?: string
+  initialPassword?: string
+  initialConfirmPassword?: string
+  initialPhoneNumber?: string
 }
 
 export default function useFormValidation({
-  initialEmail,
+  initialMemberId,
   initialPassword,
+  initialConfirmPassword,
+  initialPhoneNumber,
 }: Props) {
-  const [email, setEmail] = useState(initialEmail);
-  const [password, setPassword] = useState(initialPassword);
+  const [memberId, setMemberId] = useState(initialMemberId || '')
+  const [password, setPassword] = useState(initialPassword || '')
+  const [confirmPassword, setConfirmPassword] = useState(
+    initialConfirmPassword || '',
+  )
+  const [phoneNumber, setPhoneNumber] = useState(initialPhoneNumber || '')
 
-  const isEmailValidate = email.includes("@");
+  const isEmailValidate = memberId.includes('@')
   const isPasswordValidate = () => {
-    if (password.length < 8) return false;
+    if (password.length < 8) return false
 
-    const hasLetter = /[a-zA-Z]/.test(password);
-    const hasNumber = /[0-9]/.test(password);
-    const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(
-      password
-    );
+    const hasLetter = /[a-zA-Z]/.test(password)
+    const hasNumber = /[0-9]/.test(password)
+    const hasSpecialChar = /[!@#$%^&*()_+=[\]{};':"|,.<>/?]+/.test(password)
 
-    return hasLetter && hasNumber && hasSpecialChar;
-  };
+    return hasLetter && hasNumber && hasSpecialChar
+  }
+  const isPhoneNumberValidate = /^\d{3}-\d{4}-\d{4}$/
 
-  const emailValidate = useCallback(() => {
-    return isEmailValidate ? true : false;
-  }, [email]);
+  const memberIdValidate = useCallback(() => {
+    return isEmailValidate ? true : false
+  }, [memberId])
 
   const passwordValidate = useCallback(() => {
-    return isPasswordValidate() ? true : false;
-  }, [password]);
+    return isPasswordValidate() ? true : false
+  }, [password])
+
+  const confirmPasswordValidate = useCallback(() => {
+    return password === confirmPassword
+  }, [password, confirmPassword])
+
+  const phoneNumberValidate = useCallback(() => {
+    return isPhoneNumberValidate.test(phoneNumber)
+  }, [phoneNumber])
 
   const isValidate = useCallback(() => {
-    return isEmailValidate && isPasswordValidate() ? true : false;
-  }, [email, password]);
+    return isEmailValidate && isPasswordValidate() && confirmPasswordValidate()
+      ? true
+      : false
+  }, [memberId, password])
 
-  const handleEmailChange = (newEmail: string) => {
-    setEmail(newEmail);
-  };
+  const handleMemberIdChange = (newEmail: string) => {
+    setMemberId(newEmail)
+  }
 
   const handlePasswordChange = (newPassword: string) => {
-    setPassword(newPassword);
-  };
+    setPassword(newPassword)
+  }
+
+  const handleConfirmPasswordChange = (newConfirmPassword: string) => {
+    setConfirmPassword(newConfirmPassword)
+  }
+
+  const handlePhoneNumberChange = (newPhoneNumber: string) => {
+    setPhoneNumber(newPhoneNumber)
+  }
 
   return {
-    email,
+    memberId,
     password,
-    emailValid: emailValidate(),
+    confirmPassword,
+    phoneNumber,
+    memberIdValid: memberIdValidate(),
     passwordValid: passwordValidate(),
+    confirmPasswordValid: confirmPasswordValidate(),
+    phoneNumberValid: phoneNumberValidate(),
     validate: isValidate(),
-    handleEmailChange,
+    handleMemberIdChange,
     handlePasswordChange,
-  };
+    handleConfirmPasswordChange,
+    handlePhoneNumberChange,
+  }
 }

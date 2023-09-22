@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import JoinList from "./JoinList";
+import styled from '@emotion/styled'
+import JoinList from './JoinList'
 
 const Join = () => {
   return (
@@ -11,21 +11,21 @@ const Join = () => {
         <JoinList />
       </UnorderedList>
     </Container>
-  );
-};
+  )
+}
 
 const Container = styled.div`
   padding: 16px 24px;
-`;
+`
 
 const Title = styled.h2`
   font-size: 14px;
   margin-bottom: 12px;
-`;
+`
 
 const UnorderedList = styled.ul`
   display: flex;
   overflow: scroll;
-`;
+`
 
-export default Join;
+export default Join

@@ -1,7 +1,7 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
-import DetailInfo from "./DetailInfo";
-import DetailDescription from "./DetailDescription";
+import DetailInfo from './DetailInfo'
+import DetailDescription from './DetailDescription'
 
 const Info = () => {
   return (
@@ -9,12 +9,12 @@ const Info = () => {
       <DetailInfo />
       <DetailDescription />
     </Container>
-  );
-};
+  )
+}
 
 const Container = styled.div`
   margin-top: 11px;
   margin-bottom: 16px;
-`;
+`
 
-export default Info;
+export default Info

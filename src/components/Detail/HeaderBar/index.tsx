@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Icon } from "@components/Common/UI";
+import styled from '@emotion/styled'
+import { Icon } from '@components/Common/UI'
 
 const HeaderBar = () => {
   return (
@@ -10,8 +10,8 @@ const HeaderBar = () => {
         <Icon name="edit" />
       </div>
     </Nav>
-  );
-};
+  )
+}
 
 const Nav = styled.nav`
   padding-top: 16px;
@@ -22,6 +22,6 @@ const Nav = styled.nav`
   & > i {
     margin-left: -8px;
   }
-`;
+`
 
-export default HeaderBar;
+export default HeaderBar

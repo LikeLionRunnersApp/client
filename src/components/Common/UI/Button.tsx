@@ -1,14 +1,14 @@
-import React, { ReactNode } from "react";
-import styled from "@emotion/styled";
-import theme from "@assets/styles/theme";
+import { ReactNode } from 'react'
+import styled from '@emotion/styled'
 
 interface Props {
-  type: "button" | "submit";
-  variant: "participation" | "complete" | "start" | "login" | "socialLogin";
-  color?: string;
-  size: "sm" | "lg";
-  children: ReactNode;
-  onClick?: () => {};
+  type: 'button' | 'submit'
+  variant: 'participation' | 'complete' | 'start' | 'login' | 'socialLogin'
+  color?: string
+  size: 'sm' | 'lg'
+  children: ReactNode
+  disabled?: boolean
+  onClick?: () => void
 }
 
 const Button = ({
@@ -18,42 +18,51 @@ const Button = ({
   color,
   onClick,
   children,
+  disabled,
   ...props
 }: Props) => {
   return (
-    <ButtonContainer type={type} size={size} variant={variant} color={color}>
+    <ButtonContainer
+      type={type}
+      size={size}
+      variant={variant}
+      color={color}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {children}
     </ButtonContainer>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button
 
 const ButtonContainer = styled.button<{
-  size: string;
-  variant: string;
-  color?: string;
+  size: string
+  variant: string
+  color?: string
+  disabled?: boolean
 }>`
   border: none;
-  width: ${({ size }) => (size === "lg" ? "100%" : "62px")};
+  width: ${({ size }) => (size === 'lg' ? '100%' : '62px')};
   display: flex;
   justify-content: center;
   align-items: center;
-  height: ${({ size }) => (size === "lg" ? "40px" : "24px")};
+  height: ${({ size }) => (size === 'lg' ? '40px' : '24px')};
   background-color: ${({ variant }) =>
-    variant === "participation"
-      ? "black"
-      : variant === "complete"
-      ? "#989491"
-      : variant === "login"
-      ? "#D9D9D9"
-      : variant === "socialLogin"
-      ? "#F9E200"
-      : "#FF9704"};
+    variant === 'participation'
+      ? 'black'
+      : variant === 'complete'
+      ? '#989491'
+      : variant === 'login'
+      ? '#D9D9D9'
+      : variant === 'socialLogin'
+      ? '#F9E200'
+      : '#FF9704'};
   font-weight: 700;
-  font-size: ${({ size }) => (size === "sm" ? "12px" : "20px")};
-  border-radius: ${({ size }) => (size === "sm" ? "12px" : "32px")};
-  color: ${({ color }) => (color ? color : "#fff")};
+  font-size: ${({ size }) => (size === 'sm' ? '12px' : '20px')};
+  border-radius: ${({ size }) => (size === 'sm' ? '12px' : '32px')};
+  color: ${({ color }) => (color ? color : '#fff')};
   cursor: pointer;
   transition: all 0.15s ease-out;
 
@@ -67,7 +76,12 @@ const ButtonContainer = styled.button<{
 
   &:active {
     box-shadow: none;
-    background-color: ${({ variant }) =>
-      variant === "socialLogin" ? undefined : "#ff9704"};
+    background-color: ${({ variant, disabled }) => {
+      if (variant === 'participation' && !disabled) {
+        return '#989491'
+      } else if (variant === 'socialLogin' && !disabled) {
+        return '##ff9704'
+      }
+    }};
   }
-`;
+`

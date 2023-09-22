@@ -1,4 +1,4 @@
-import { css } from "@emotion/react";
+import { css } from '@emotion/react'
 /* http://meyerweb.com/eric/tools/css/reset/
   v2.0 | 20110126
   License: none (public domain)
@@ -6,13 +6,13 @@ import { css } from "@emotion/react";
 
 const GlobalStyle = css`
   @font-face {
-    font-family: "JGaegujaengyi-Medium-KO";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/JGaegujaengyi-Medium-KO.woff2")
-      format("woff2");
+    font-family: 'JGaegujaengyi-Medium-KO';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/JGaegujaengyi-Medium-KO.woff2')
+      format('woff2');
   }
 
   body {
-    font-family: "Pretendard", sans-serif;
+    font-family: 'Pretendard', sans-serif;
     padding: 0 !important;
     background-color: #f3f3f3;
     user-select: none;
@@ -144,7 +144,7 @@ const GlobalStyle = css`
   blockquote:after,
   q:before,
   q:after {
-    content: "";
+    content: '';
     content: none;
   }
   table {
@@ -159,6 +159,6 @@ const GlobalStyle = css`
   button:focus {
     outline: none;
   }
-`;
+`
 
-export default GlobalStyle;
+export default GlobalStyle

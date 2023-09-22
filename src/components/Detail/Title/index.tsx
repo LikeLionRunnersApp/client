@@ -1,6 +1,5 @@
-import styled from "@emotion/styled";
-import { Flag } from "@components/Common/UI";
-import { ITitle } from "@pages/Detail";
+import styled from '@emotion/styled'
+import { Flag } from '@components/Common/UI'
 
 const Title = () => {
   return (
@@ -8,8 +7,8 @@ const Title = () => {
       <Flag type="interval" />
       <TitleContent>뉴비 환영!! 아기사자 모여라</TitleContent>
     </TitleContainer>
-  );
-};
+  )
+}
 
 const TitleContainer = styled.div`
   position: absolute;
@@ -19,11 +18,11 @@ const TitleContainer = styled.div`
   & div:first-of-type {
     margin-bottom: 8px;
   }
-`;
+`
 
 const TitleContent = styled.h1`
   font-size: 20px;
   font-weight: 600;
-`;
+`
 
-export default Title;
+export default Title

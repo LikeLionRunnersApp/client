@@ -18,7 +18,7 @@
     "@types/node": "^16.18.38",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
-    "axios": "^1.4.0",
+    "axios": "^1.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-material-ui-carousel": "^3.4.2",
@@ -32,8 +32,18 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
+    "format": "prettier --write --cache .",
+    "lint": "eslint --cache .",
+    "lint-staged": "lint-staged",
+    "postinstall": "husky install",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
+  },
+  "lint-staged": {
+    "**/*.{tsx,ts,jsx,js}": [
+      "eslint --cache --fix",
+      "prettier --write --cache"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -65,7 +75,12 @@
     "@storybook/react-webpack5": "^7.0.27",
     "@storybook/testing-library": "^0.0.14-next.2",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "eslint": "^8.49.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-storybook": "^0.6.12",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
     "prop-types": "^15.8.1",
     "storybook": "^7.0.27",
     "tsconfig-paths-webpack-plugin": "^4.1.0",

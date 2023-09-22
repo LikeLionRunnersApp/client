@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import cloud from "@assets/images/Login/cloud.png";
+import styled from '@emotion/styled'
+import cloud from '@assets/images/Login/cloud.png'
 
 const LoginHeader = () => {
   return (
@@ -10,12 +10,12 @@ const LoginHeader = () => {
         뛰슈에 온 걸 <br /> 환영해유~
       </h1>
     </HeaderContainer>
-  );
-};
+  )
+}
 
 const HeaderContainer = styled.header`
   position: relative;
-  font-family: "JGaegujaengyi-Medium-KO";
+  font-family: 'JGaegujaengyi-Medium-KO';
   display: flex;
   align-items: center;
   height: 242px;
@@ -38,6 +38,6 @@ const HeaderContainer = styled.header`
     top: 151px;
     left: 310px;
   }
-`;
+`
 
-export default LoginHeader;
+export default LoginHeader

@@ -5,7 +5,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   id: string
   onChange(e: ChangeEvent<HTMLInputElement>): void
-  value: string
+  value: string | undefined
   placeholder: string
   hidden: boolean
   label: string
@@ -50,6 +50,10 @@ const Label = styled.label<{ hidden: boolean }>`
   height: 1px;
   overflow: hidden;
   opacity: 0;`}
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 16px;
 `
 
 const FormInputContainer = styled.input`
@@ -57,6 +61,7 @@ const FormInputContainer = styled.input`
   font-size: 20px;
   padding-bottom: 4px;
   outline: none;
+  width: 100%;
 
   &::placeholder {
     color: #d9d9d9;
@@ -64,5 +69,4 @@ const FormInputContainer = styled.input`
 
   height: 30px;
   border-bottom: 2px solid #000;
-  margin-bottom: 32px;
 `

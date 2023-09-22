@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import { Button } from "@components/Common/UI";
-import { Icon } from "@components/Common/UI";
+import styled from '@emotion/styled'
+import { Button } from '@components/Common/UI'
+import { Icon } from '@components/Common/UI'
 
 const FooterBar = () => {
   return (
@@ -15,8 +15,8 @@ const FooterBar = () => {
         </Button>
       </Container>
     </FooterBarContainer>
-  );
-};
+  )
+}
 
 const FooterBarContainer = styled.div`
   display: flex;
@@ -27,26 +27,26 @@ const FooterBarContainer = styled.div`
   position: fixed;
   bottom: 0;
   box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, 0.1);
-`;
+`
 
 const CheeringButton = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 9px;
   align-items: center;
-`;
+`
 
 const Count = styled.strong`
   position: relative;
   top: -8px;
   color: #ff9704;
-`;
+`
 
 const Container = styled.div`
   display: flex;
   width: 340px;
   justify-content: center;
   align-items: center;
-`;
+`
 
-export default FooterBar;
+export default FooterBar

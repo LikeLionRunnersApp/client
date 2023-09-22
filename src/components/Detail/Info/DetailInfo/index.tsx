@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
-import { IListIcon, ListIcon } from "@assets/images/ListIcon";
+import { IListIcon, ListIcon } from '@assets/images/ListIcon'
 
 const DetailInfo = () => {
   return (
@@ -16,10 +16,10 @@ const DetailInfo = () => {
       <dt>location</dt>
       <dd>2023-07-04 / pm 22:00</dd>
     </Detail>
-  );
-};
+  )
+}
 
-export default DetailInfo;
+export default DetailInfo
 
 const Detail = styled.dl<{ icon: IListIcon }>`
   opacity: 50%;
@@ -51,7 +51,7 @@ const Detail = styled.dl<{ icon: IListIcon }>`
 
   dd::before {
     display: inline-block;
-    content: "";
+    content: '';
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -72,18 +72,18 @@ const Detail = styled.dl<{ icon: IListIcon }>`
   }
 
   dd:first-of-type:before {
-    background-image: url(${({ icon }) => icon["personnel"]});
+    background-image: url(${({ icon }) => icon.personnel});
   }
 
   dd:nth-of-type(2):before {
-    background-image: url(${({ icon }) => icon["time"]});
+    background-image: url(${({ icon }) => icon.time});
   }
 
   dd:nth-of-type(3):before {
-    background-image: url(${({ icon }) => icon["location"]});
+    background-image: url(${({ icon }) => icon.location});
   }
 
   dd:last-of-type:before {
-    background-image: url(${({ icon }) => icon["date"]});
+    background-image: url(${({ icon }) => icon.date});
   }
-`;
+`

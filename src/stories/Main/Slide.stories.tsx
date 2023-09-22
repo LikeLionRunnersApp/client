@@ -1,10 +1,10 @@
-import Slide from "@components/Main/Slide";
+import Slide from '@components/Main/Slide'
 
 export default {
-  title: "Component/Main/Slide",
+  title: 'Component/Main/Slide',
   component: Slide,
-};
+}
 
 export const Default = (args: any) => {
-  return <Slide {...args} />;
-};
+  return <Slide {...args} />
+}

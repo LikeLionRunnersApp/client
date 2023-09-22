@@ -1,10 +1,10 @@
-import Info from "@components/Detail/Info";
+import Info from '@components/Detail/Info'
 
 export default {
-  title: "Component/Detail/Info",
+  title: 'Component/Detail/Info',
   component: Info,
-};
+}
 
 export const Default = (args: any) => {
-  return <Info {...args} />;
-};
+  return <Info {...args} />
+}

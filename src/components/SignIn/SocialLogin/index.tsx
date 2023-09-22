@@ -1,13 +1,20 @@
 import styled from '@emotion/styled'
 import Button from '@components/Common/UI/Button'
 import { Icons } from '@assets/images/Icon'
+import { loginWithKakao } from '@api/oauth'
 
 const SocialLogin = () => {
   return (
     <div>
       <Title>간편로그인</Title>
-      <Button type="button" variant="socialLogin" size="lg" color="black">
-        <img src={Icons['kakao']} alt="kakao" />
+      <Button
+        type="button"
+        variant="socialLogin"
+        size="lg"
+        color="black"
+        onClick={loginWithKakao}
+      >
+        <img src={Icons.kakao} alt="kakao" />
         카카오톡 로그인
       </Button>
     </div>

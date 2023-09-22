@@ -6,7 +6,9 @@
       "@components/*": ["./components/*"],
       "@assets/*": ["./assets/*"],
       "@pages/*": ["./pages/*"],
-      "@reoutes/*": ["./routes/*"]
+      "@api/*": ["./api/*"],
+      "@types/*": ["./types/*"],
+      "@router/*": ["./router/*"]
     }
   }
 }

@@ -1,138 +1,137 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
-import { BaseLayout, Container } from "@components/Common";
+import { BaseLayout, Container } from '@components/Common'
 import {
   Date,
   Wheather,
   Slide,
   Calendar,
   RecruitmentList,
-} from "@components/Main";
-import headerBackgroundImage from "@assets/images/Main/bg.png";
-import run from "@assets/images/Main/run.svg";
-import axios from "axios";
-import { useState } from "react";
+} from '@components/Main'
+import headerBackgroundImage from '@assets/images/Main/bg.png'
+import run from '@assets/images/Main/run.svg'
+import { useState } from 'react'
 
 export interface IWeeks {
-  id: number;
-  flag: "interval" | "run" | "work";
-  image: string;
-  title: string;
-  totalMember: number;
-  joinMember: number;
-  play_time: number;
-  location: string;
-  time: string;
-  status: "start" | "participation" | "complete";
+  id: number
+  flag: 'interval' | 'run' | 'work'
+  image: string
+  title: string
+  totalMember: number
+  joinMember: number
+  play_time: number
+  location: string
+  time: string
+  status: 'start' | 'participation' | 'complete'
 }
 
 const Main = () => {
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState('')
 
   const weeks: IWeeks[] = [
     {
       id: 1,
-      flag: "interval",
-      image: "",
-      title: "뉴비 환영!! 아기사자 모여라",
+      flag: 'interval',
+      image: '',
+      title: '뉴비 환영!! 아기사자 모여라',
       totalMember: 6,
       joinMember: 3,
       play_time: 40,
-      location: "장대동 학사마을 다리 밑",
-      time: "22:00",
-      status: "start",
+      location: '장대동 학사마을 다리 밑',
+      time: '22:00',
+      status: 'start',
     },
     {
       id: 2,
-      flag: "interval",
-      image: "",
-      title: "뉴비 환영!! 아기사자 모여라",
+      flag: 'interval',
+      image: '',
+      title: '뉴비 환영!! 아기사자 모여라',
       totalMember: 6,
       joinMember: 3,
       play_time: 40,
-      location: "장대동 학사마을 다리 밑",
-      time: "22:00",
-      status: "start",
+      location: '장대동 학사마을 다리 밑',
+      time: '22:00',
+      status: 'start',
     },
     {
       id: 3,
-      flag: "interval",
-      image: "",
-      title: "뉴비 환영!! 아기사자 모여라",
+      flag: 'interval',
+      image: '',
+      title: '뉴비 환영!! 아기사자 모여라',
       totalMember: 6,
       joinMember: 3,
       play_time: 40,
-      location: "장대동 학사마을 다리 밑",
-      time: "22:00",
-      status: "start",
+      location: '장대동 학사마을 다리 밑',
+      time: '22:00',
+      status: 'start',
     },
     {
       id: 4,
-      flag: "interval",
-      image: "",
-      title: "뉴비 환영!! 아기사자 모여라",
+      flag: 'interval',
+      image: '',
+      title: '뉴비 환영!! 아기사자 모여라',
       totalMember: 6,
       joinMember: 3,
       play_time: 40,
-      location: "장대동 학사마을 다리 밑",
-      time: "22:00",
-      status: "start",
+      location: '장대동 학사마을 다리 밑',
+      time: '22:00',
+      status: 'start',
     },
     {
       id: 5,
-      flag: "interval",
-      image: "",
-      title: "뉴비 환영!! 아기사자 모여라",
+      flag: 'interval',
+      image: '',
+      title: '뉴비 환영!! 아기사자 모여라',
       totalMember: 6,
       joinMember: 3,
       play_time: 40,
-      location: "장대동 학사마을 다리 밑",
-      time: "22:00",
-      status: "start",
+      location: '장대동 학사마을 다리 밑',
+      time: '22:00',
+      status: 'start',
     },
     {
       id: 6,
-      flag: "interval",
-      image: "",
-      title: "뉴비 환영!! 아기사자 모여라",
+      flag: 'interval',
+      image: '',
+      title: '뉴비 환영!! 아기사자 모여라',
       totalMember: 6,
       joinMember: 3,
       play_time: 40,
-      location: "장대동 학사마을 다리 밑",
-      time: "22:00",
-      status: "start",
+      location: '장대동 학사마을 다리 밑',
+      time: '22:00',
+      status: 'start',
     },
     {
       id: 7,
-      flag: "interval",
-      image: "",
-      title: "뉴비 환영!! 아기사자 모여라",
+      flag: 'interval',
+      image: '',
+      title: '뉴비 환영!! 아기사자 모여라',
       totalMember: 6,
       joinMember: 3,
       play_time: 40,
-      location: "장대동 학사마을 다리 밑",
-      time: "22:00",
-      status: "start",
+      location: '장대동 학사마을 다리 밑',
+      time: '22:00',
+      status: 'start',
     },
     {
       id: 8,
-      flag: "interval",
-      image: "",
-      title: "뉴비 환영!! 아기사자 모여라",
+      flag: 'interval',
+      image: '',
+      title: '뉴비 환영!! 아기사자 모여라',
       totalMember: 6,
       joinMember: 3,
       play_time: 40,
-      location: "장대동 학사마을 다리 밑",
-      time: "22:00",
-      status: "start",
+      location: '장대동 학사마을 다리 밑',
+      time: '22:00',
+      status: 'start',
     },
-  ];
+  ]
 
   const handleGetAsync = async (currentDate: string) => {
-    setDate(currentDate);
-    console.log(date);
+    setDate(currentDate)
+    console.log(date)
     // const res = await axios()
-  };
+  }
 
   return (
     <BaseLayout variant="main">
@@ -155,10 +154,10 @@ const Main = () => {
         </Container>
       </MainContainer>
     </BaseLayout>
-  );
-};
+  )
+}
 
-export default Main;
+export default Main
 
 const Header = styled.header<{ image: string }>`
   padding-top: 31px;
@@ -166,18 +165,18 @@ const Header = styled.header<{ image: string }>`
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(${({ image }) => image});
-`;
+`
 
 const FlexContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
-`;
+`
 
 const MainContainer = styled.main`
   padding-top: 16px;
-`;
+`
 
 const Title = styled.h1<{ image: string }>`
   display: flex;
@@ -186,7 +185,7 @@ const Title = styled.h1<{ image: string }>`
   margin-bottom: 25px;
 
   &::after {
-    content: "";
+    content: '';
     display: block;
     width: 22px;
     height: 13px;
@@ -195,4 +194,4 @@ const Title = styled.h1<{ image: string }>`
     background-size: contain;
     margin-left: 4px;
   }
-`;
+`

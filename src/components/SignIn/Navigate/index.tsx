@@ -1,20 +1,30 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
+import { Link } from 'react-router-dom'
 
 const Navigate = () => {
   return (
     <NavContainer>
       <UnorderedList>
-        <li>아이디/비밀번호 찾기</li>
-        <li>회원가입</li>
+        <li>
+          <Link to="/find-user">아이디/비밀번호 찾기</Link>
+        </li>
+        <li>
+          <Link to="/signup/1">회원가입</Link>
+        </li>
       </UnorderedList>
     </NavContainer>
-  );
-};
+  )
+}
 
 const NavContainer = styled.nav`
   margin-top: 24px;
   margin-bottom: 48px;
-`;
+
+  & a {
+    text-decoration: none;
+    color: #d9d9d9;
+  }
+`
 
 const UnorderedList = styled.ul`
   display: flex;
@@ -30,6 +40,6 @@ const UnorderedList = styled.ul`
   & li:last-of-type {
     margin-right: 0;
   }
-`;
+`
 
-export default Navigate;
+export default Navigate

@@ -5,22 +5,40 @@ import styled from '@emotion/styled'
 import { Button, FormInput } from '@components/Common/UI'
 import { FormEvent, useState } from 'react'
 import useFormValidation from '@hooks/useFormValidation'
-const Form = () => {
-  const { email, password, validate, handleEmailChange, handlePasswordChange } =
-    useFormValidation({ initialEmail: '', initialPassword: '' })
+import { fetchLogin } from '@api/auth'
+import LoginModal from '../LoginModal'
+import { useNavigate } from 'react-router-dom'
+
+const SignInForm = () => {
+  const {
+    memberId,
+    password,
+    validate,
+    handleMemberIdChange,
+    handlePasswordChange,
+  } = useFormValidation({ initialMemberId: '', initialPassword: '' })
 
   const [alert, setAlert] = useState('')
+  const [isLogined, setIsLogined] = useState(false)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
-    email.length > 0 || password.length > 0
+    memberId.length > 0 || password.length > 0
       ? setAlert('')
       : setAlert('먼저 로그인이 필요해유')
-  }, [email, password])
+  }, [memberId, password])
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // 사용자가 있는지 없는지 API 요청 및 응답
-    // 맞으면 /main으로 이동, 틀리면 setAlert()
+    const res = await fetchLogin({ memberId, password })
+    if (res === undefined) {
+      setIsLogined(true)
+    } else {
+      localStorage.setItem('token', JSON.stringify(res.token))
+      setIsLogined(false)
+      navigate('/')
+    }
   }
 
   return (
@@ -28,10 +46,10 @@ const Form = () => {
       <Alert>{alert}</Alert>
       <FormInput
         type="text"
-        id="email"
-        name="email"
-        onChange={e => handleEmailChange(e.target.value)}
-        value={email}
+        id="memberId"
+        name="memberId"
+        onChange={e => handleMemberIdChange(e.target.value)}
+        value={memberId}
         placeholder="이메일을 입력해주세요"
         hidden={true}
         label="이메일"
@@ -49,6 +67,7 @@ const Form = () => {
       <Button type="submit" variant={validate ? 'start' : 'login'} size="lg">
         로그인하기
       </Button>
+      {isLogined && <LoginModal />}
     </Container>
   )
 }
@@ -57,6 +76,10 @@ const Container = styled.form`
   position: relative;
   display: flex;
   flex-direction: column;
+
+  & input {
+    margin-bottom: 32px;
+  }
 `
 
 const Alert = styled.strong`
@@ -68,13 +91,4 @@ const Alert = styled.strong`
   font-weight: 400;
 `
 
-const Label = styled.label`
-  position: absolute;
-  z-index: -100;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  opacity: 0;
-`
-
-export default Form
+export default SignInForm

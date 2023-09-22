@@ -8,7 +8,7 @@ import Flag from '@components/Common/UI/Flag'
 import { Icon } from '@components/Common/UI'
 import Button from '@components/Common/UI/Button'
 
-import { IWeeks } from '@pages/Main'
+import { IWeeks } from '@pages/Home'
 
 interface Props {
   week: IWeeks
@@ -155,19 +155,19 @@ const Detail = styled.dl<{ icon: IListIcon }>`
   }
 
   dd:first-of-type:before {
-    background-image: url(${({ icon }) => icon['personnel']});
+    background-image: url(${({ icon }) => icon.personnel});
   }
 
   dd:nth-of-type(2):before {
-    background-image: url(${({ icon }) => icon['time']});
+    background-image: url(${({ icon }) => icon.time});
   }
 
   dd:nth-of-type(3):before {
-    background-image: url(${({ icon }) => icon['location']});
+    background-image: url(${({ icon }) => icon.location});
   }
 
   dd:last-of-type:before {
-    background-image: url(${({ icon }) => icon['date']});
+    background-image: url(${({ icon }) => icon.date});
   }
 `
 
