@@ -20,7 +20,7 @@ const Router = () => {
         <Route path="2" element={<UserProfileInput />} />
         <Route path="3" element={<Success />} />
       </Route>
-      <Route path="/finduser" element={<FindUser />} />
+      <Route path="/find-user" element={<FindUser />} />
       <Route path="/kakaologin/redirect" element={<KakaoCallback />} />
     </Routes>
   )

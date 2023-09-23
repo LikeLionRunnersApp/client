@@ -6,7 +6,7 @@ interface Props {
 }
 
 const FindNavigator = ({ onTab }: Props) => {
-  const [selectedTab, setSelectedTab] = useState<string>('')
+  const [selectedTab, setSelectedTab] = useState<string>('id')
 
   const handleSetTab = (tabName: string) => {
     setSelectedTab(tabName)
