@@ -1,5 +1,5 @@
 import GlobalThemeProvider from '@assets/styles/GlobalThemeProvider'
-import HeaderBar from '@components/Detail/HeaderBar'
+import HeaderBar from '@/components/Detail/HeaderBar'
 
 export default {
   title: 'Component/Detail/HeaderBar',

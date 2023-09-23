@@ -1,4 +1,4 @@
-import RecruitmentList from '@components/Main/RecruitmentList'
+import RecruitmentList from '@/components/Main/RecruitmentList/RecruitmentList'
 
 export default {
   title: 'Component/Main/RecruitmentList',

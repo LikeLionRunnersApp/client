@@ -1,4 +1,4 @@
-import Date from '@components/Main/Date'
+import Date from '@/components/Main/Date'
 import GlobalThemeProvider from '@assets/styles/GlobalThemeProvider'
 
 export default {

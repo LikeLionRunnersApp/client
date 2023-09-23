@@ -1,4 +1,4 @@
-import Title from '@components/Detail/Title'
+import Title from '@/components/Detail/Title'
 
 export default {
   title: 'Component/Detail/Title',

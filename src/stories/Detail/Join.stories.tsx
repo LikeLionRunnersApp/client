@@ -1,5 +1,5 @@
 import GlobalThemeProvider from '@assets/styles/GlobalThemeProvider'
-import Join from '@components/Detail/Join'
+import Join from '@/components/Detail/Join/Join'
 
 export default {
   title: 'Component/Detail/Join',

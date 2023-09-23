@@ -7,6 +7,7 @@ import KakaoCallback from '@components/SignIn/KakaoCallback'
 import LoginCredentialsInput from '@components/SignUp/LoginCredentialsInput'
 import UserProfileInput from '@components/SignUp/UserProfileInput'
 import Success from '@components/SignUp/Success'
+import FindUser from '@/pages/FindUser'
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
         <Route path="2" element={<UserProfileInput />} />
         <Route path="3" element={<Success />} />
       </Route>
+      <Route path="/finduser" element={<FindUser />} />
       <Route path="/kakaologin/redirect" element={<KakaoCallback />} />
     </Routes>
   )

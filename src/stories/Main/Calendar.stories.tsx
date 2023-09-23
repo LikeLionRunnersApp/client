@@ -1,5 +1,5 @@
 import GlobalThemeProvider from '@assets/styles/GlobalThemeProvider'
-import Calendar from '@components/Main/Calendar'
+import Calendar from '@/components/Main/Calendar'
 
 export default {
   title: 'Component/Main/Calendar',

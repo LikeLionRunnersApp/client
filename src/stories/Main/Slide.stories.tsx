@@ -1,4 +1,4 @@
-import Slide from '@components/Main/Slide'
+import Slide from '@/components/Main/Slide/Slide'
 
 export default {
   title: 'Component/Main/Slide',

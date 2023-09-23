@@ -1,4 +1,4 @@
-import Host from '@components/Detail/Host'
+import Host from '@/components/Detail/Host'
 
 export default {
   title: 'Component/Detail/Host',
