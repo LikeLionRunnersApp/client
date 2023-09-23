@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 interface Props {
@@ -8,9 +9,12 @@ interface Props {
 const FindNavigator = ({ onTab }: Props) => {
   const [selectedTab, setSelectedTab] = useState<string>('id')
 
+  const navigate = useNavigate()
+
   const handleSetTab = (tabName: string) => {
     setSelectedTab(tabName)
     onTab(tabName)
+    tabName === 'id' ? navigate('/find-user') : navigate('/find-user/1')
   }
 
   return (
