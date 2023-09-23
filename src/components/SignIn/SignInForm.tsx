@@ -6,7 +6,7 @@ import { Button, FormInput } from '@components/Common/UI'
 import { FormEvent, useState } from 'react'
 import useFormValidation from '@hooks/useFormValidation'
 import { fetchLogin } from '@api/auth'
-import LoginModal from '../LoginModal'
+import LoginModal from './LoginModal'
 import { useNavigate } from 'react-router-dom'
 
 const SignInForm = () => {
