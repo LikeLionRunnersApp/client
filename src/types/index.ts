@@ -20,3 +20,14 @@ export interface Weeks {
   time: string
   status: 'start' | 'participation' | 'complete'
 }
+
+export interface Params {
+  serviceKey: string
+  pageNo: string
+  numOfRows: string
+  dataType: string
+  base_date: string
+  base_time: string
+  nx: string
+  ny: string
+}

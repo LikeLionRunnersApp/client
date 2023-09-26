@@ -1,21 +1,10 @@
 import { useEffect, useState } from 'react'
 import GlobalThemeProvider from '@assets/styles/GlobalThemeProvider'
-import axios from 'axios'
 import theme from '@assets/styles/theme'
 import useDate from '@hooks/useDate'
 import styled from '@emotion/styled'
 import { Wheathers } from '@assets/images/wheather/index'
-
-interface Params {
-  serviceKey: string
-  pageNo: string
-  numOfRows: string
-  dataType: string
-  base_date: string
-  base_time: string
-  nx: string
-  ny: string
-}
+import { fetchGetWheather } from '@/api/wheather'
 
 interface WheatherProps {
   color: keyof typeof theme.palette
@@ -54,26 +43,10 @@ const Wheather = () => {
 
   useEffect(() => {
     const getWheather = async () => {
-      const url =
-        'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst'
-
-      const params: Params = {
-        serviceKey:
-          'PdHhB7W9q2RyINdmlCb3pgDiKjNIZh5o5TezfsUzyWsVB0cpPYhZF1nWX45p1mzNIRkNw25QtVpt9CdKuRIzbA==',
-        pageNo: '1',
-        numOfRows: '1000',
-        dataType: 'JSON',
-        base_date: formattedDate,
-        base_time:
-          parseInt(currentTime[2]) < 3
-            ? `${currentTime[0]}${parseInt(currentTime[1]) - 1}30`
-            : `${currentTime[0]}${currentTime[1]}30`,
-        nx: '67',
-        ny: '101',
-      }
-      const res = await axios.get(url, { params })
-      const PTY = parseInt(res.data.response.body.items.item[6].fcstValue)
-      const SKY = parseInt(res.data.response.body.items.item[18].fcstValue)
+      const { PTY, SKY } = await fetchGetWheather({
+        formattedDate,
+        currentTime,
+      })
       handleTodayWheather(PTY, SKY)
     }
     getWheather()

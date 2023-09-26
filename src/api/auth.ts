@@ -1,4 +1,4 @@
-import instance from '@api/index'
+import instance from '@/api/instance'
 import { User, UserInfo } from '@types/'
 
 export const fetchLogin = async ({

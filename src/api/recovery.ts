@@ -1,4 +1,4 @@
-import instance from '@api/index'
+import instance from '@/api/instance'
 
 export const fetchGetMemberId = async ({
   name,
