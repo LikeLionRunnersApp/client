@@ -3,6 +3,7 @@ import { FormInput, Button } from '@components/Common/UI'
 import useFormValidation from '@hooks/useFormValidation'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { fetchMemberIdDuplicated } from '@/api/auth'
 
 const LoginCredentialsInput = () => {
   const {
@@ -27,6 +28,8 @@ const LoginCredentialsInput = () => {
   const [memberIdAlert, setMemberIdAlert] = useState<string>('')
   const [passwordAlert, setPasswordAlert] = useState<string>('')
   const [confirmPasswordAlert, setConfirmPasswordAlert] = useState<string>('')
+  const [isDuplicatedMemberId, setIsDuplicatedMemberId] =
+    useState<boolean>(false)
 
   useEffect(() => {
     if (memberId.length > 0) {
@@ -49,18 +52,22 @@ const LoginCredentialsInput = () => {
   }, [memberId, password, confirmPassword])
 
   const checkDuplicateEmail = async () => {
-    // 이메일 중복확인 요청 / 응답
-    // const res = await ~
-    const res = true
-    res === true
+    const res = await fetchMemberIdDuplicated(memberId)
+    setIsDuplicatedMemberId(res.ok)
+    isDuplicatedMemberId === true
       ? setMemberIdDuplicated('사용 가능한 이메일이어유~')
       : setMemberIdDuplicated('이미 사용하고 있는 이메일이어유~')
   }
 
-  const handleClickNext = () => {
-    // const res = await axios.post('/hello')
-    // console.log(res.data)
-    navigate('/signup/2')
+  const handleClickNext = async () => {
+    !isDuplicatedMemberId
+      ? alert('이메일 중복을 확인해주세요.')
+      : navigate('/signup/2', {
+          state: {
+            memberId,
+            password,
+          },
+        })
   }
 
   return (

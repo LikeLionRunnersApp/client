@@ -1,15 +1,19 @@
 import styled from '@emotion/styled'
 import { FormInput, Button } from '@components/Common/UI'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import useFormValidation from '@hooks/useFormValidation'
+import { fetchSignUp } from '@/api/auth'
 
 const UserProfileInput = () => {
   const { phoneNumber, phoneNumberValid, handlePhoneNumberChange } =
     useFormValidation({ initialPhoneNumber: '' })
   const [name, setName] = useState<string>('')
   const [phoneNumberAlert, setPhoneNumberAlert] = useState('')
+
   const navigate = useNavigate()
+  const location = useLocation()
+  const userInfo = location.state
 
   useEffect(() => {
     if (phoneNumber.length > 0) {
@@ -20,10 +24,9 @@ const UserProfileInput = () => {
   }, [phoneNumber])
 
   const handleClickNext = async () => {
-    navigate('/signup/3')
-    // ok => /signup/3
-    // no => modal
-    // navigate('/signup/3')
+    const res = await fetchSignUp({ ...userInfo, phoneNum: phoneNumber, name })
+
+    res.ok ? navigate('/signup/3') : alert('회원가입에 실패하였습니다.')
   }
 
   return (
