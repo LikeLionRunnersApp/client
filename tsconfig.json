@@ -26,7 +26,8 @@
       "@pages/*": ["src/pages/*"],
       "@router/*": ["src/router/*"],
       "@stories/*": ["src/stories/*"],
-      "@types/*": ["src/types/*"]
+      "@types/*": ["src/types/*"],
+      "@redux/*": ["src/redux/*"]
     }
   },
   "include": ["src", "custom.d.ts"]

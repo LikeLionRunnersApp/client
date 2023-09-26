@@ -23,6 +23,7 @@ export default defineConfig({
       { find: '@router', replacement: path.resolve(__dirname, 'src/router') },
       { find: '@stories', replacement: path.resolve(__dirname, 'src/stories') },
       { find: '@types', replacement: path.resolve(__dirname, 'src/types') },
+      { find: '@redux', replacement: path.resolve(__dirname, 'src/redux') },
     ],
   },
 })
