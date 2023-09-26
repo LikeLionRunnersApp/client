@@ -4,6 +4,7 @@ import useFormValidation from '@/hooks/useFormValidation'
 import { useState, useEffect } from 'react'
 import { Button } from '@components/Common/UI'
 import { useNavigate } from 'react-router-dom'
+import { fetchSendAuth } from '@/api/recovery'
 
 const FindPw = () => {
   const {
@@ -21,7 +22,11 @@ const FindPw = () => {
   const [phoneNumberAlert, setPhoneNumberAlert] = useState<string>('')
   const [memberIdAlert, setMemberIdAlert] = useState<string>('')
   const [isVerificationBox, setIsVerificationBox] = useState(false)
-  const [verificationCode, setVerificationCode] = useState('')
+  const [verificationCode, setVerificationCode] = useState<string>('')
+  const [auth, setAuth] = useState<{ authCode: string; token?: string }>({
+    authCode: '',
+    token: '',
+  })
 
   const navigate = useNavigate()
 
@@ -39,19 +44,24 @@ const FindPw = () => {
     }
   }, [memberId, phoneNumber])
 
-  const checkVerification = () => {
+  const checkVerification = async () => {
     const isValid = memberIdValid && phoneNumberValid
     if (!isValid) return alert('정보를 잘 입력해주세요.')
-    // /sendAuth
-    // memberId, name, phoneNum => ""
-    setIsVerificationBox(true)
+
+    const res = await fetchSendAuth({ memberId, name, phoneNum: phoneNumber })
+
+    if (res.authCode === '') {
+      alert('일치하는 정보가 없습니다.')
+    } else {
+      setAuth({ ...auth, authCode: res.authCode, token: res.token })
+      setIsVerificationBox(true)
+    }
   }
 
-  const checkVerificationcode = () => {
-    // verification code가 안맞으면 modal
-    alert('인증번호가 일치하지 않습니다.')
-    // verfication code가 맞으면 /find-user/2로 이동
-    navigate('/find-user/2')
+  const checkVerificationCode = () => {
+    verificationCode === auth.authCode
+      ? navigate('/find-user/2', { state: { token: auth.token } })
+      : alert('인증번호가 일치하지 않습니다.')
   }
 
   return (
@@ -111,7 +121,7 @@ const FindPw = () => {
           variant={verificationCode.length > 0 ? 'start' : 'login'}
           size="lg"
           disabled={verificationCode.length > 0 ? false : true}
-          onClick={checkVerificationcode}
+          onClick={checkVerificationCode}
         >
           다음
         </Button>

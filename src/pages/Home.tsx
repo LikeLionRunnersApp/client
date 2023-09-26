@@ -12,19 +12,7 @@ import headerBackgroundImage from '@assets/images/Main/bg.png'
 import run from '@assets/images/Main/run.svg'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
-export interface IWeeks {
-  id: number
-  flag: 'interval' | 'run' | 'work'
-  image: string
-  title: string
-  totalMember: number
-  joinMember: number
-  play_time: number
-  location: string
-  time: string
-  status: 'start' | 'participation' | 'complete'
-}
+import { Weeks } from '@/types'
 
 const Main = () => {
   const [date, setDate] = useState('')
@@ -36,7 +24,7 @@ const Main = () => {
     !token && navigate('/signin')
   }, [])
 
-  const weeks: IWeeks[] = [
+  const weeks: Weeks[] = [
     {
       id: 1,
       flag: 'interval',

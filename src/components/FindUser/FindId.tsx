@@ -4,6 +4,7 @@ import { FormInput } from '@components/Common/UI'
 import { useState } from 'react'
 import useFormValidation from '@/hooks/useFormValidation'
 import { Button } from '@components/Common/UI'
+import { fetchGetMemberId } from '@/api/recovery'
 
 const FindId = () => {
   const { phoneNumber, phoneNumberValid, handlePhoneNumberChange } =
@@ -21,11 +22,14 @@ const FindId = () => {
     }
   }, [phoneNumber])
 
-  const handleShowId = () => {
-    // 일치하지 않는 정보 일 경우
-    return alert('일치하는 정보가 없습니다.')
+  const handleShowId = async () => {
+    const res = await fetchGetMemberId({ name, phoneNum: phoneNumber })
 
-    // 일치할 경우 id출력
+    if (res.memberId !== '') {
+      alert(res.memberId)
+    } else {
+      return alert('일치하는 정보가 없습니다.')
+    }
   }
 
   return (
