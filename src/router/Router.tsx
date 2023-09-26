@@ -6,7 +6,7 @@ import {
   LoginCredentialsInput,
   UserProfileInput,
 } from '@components/SignUp/'
-import { FindPw, ResetPw } from '@/components/FindUser/'
+import { FindId, FindPw, ResetPw } from '@/components/FindUser/'
 
 const Router = () => {
   return (
@@ -20,6 +20,7 @@ const Router = () => {
         <Route path="3" element={<Success />} />
       </Route>
       <Route path="/find-user" element={<FindUser />}>
+        <Route path="id" element={<FindId />} />
         <Route path="1" element={<FindPw />} />
         <Route path="2" element={<ResetPw />} />
       </Route>

@@ -6,7 +6,7 @@ const Navigate = () => {
     <NavContainer>
       <UnorderedList>
         <li>
-          <Link to="/find-user">아이디/비밀번호 찾기</Link>
+          <Link to="/find-user/id">아이디/비밀번호 찾기</Link>
         </li>
         <li>
           <Link to="/signup/1">회원가입</Link>

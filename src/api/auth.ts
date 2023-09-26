@@ -1,5 +1,5 @@
 import instance from '@api/index'
-import { User, UserInfo } from '@types/index'
+import { User, UserInfo } from '@types/'
 
 export const fetchLogin = async ({
   memberId,

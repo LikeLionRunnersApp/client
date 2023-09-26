@@ -23,3 +23,17 @@ export const fetchSendAuth = async ({
   const res = await instance.post('/sendAuthCode', { memberId, name, phoneNum })
   return res.data
 }
+
+export const fetchResetPassword = async ({
+  token,
+  password,
+}: {
+  token: string
+  password: string
+}): Promise<{ ok: boolean }> => {
+  const res = await instance.post('/resetPassword', {
+    token,
+    password,
+  })
+  return res.data
+}

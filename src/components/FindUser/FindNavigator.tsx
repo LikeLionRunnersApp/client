@@ -1,34 +1,24 @@
 import styled from '@emotion/styled'
-import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
-interface Props {
-  onTab(tabName: string): void
-}
-
-const FindNavigator = ({ onTab }: Props) => {
-  const [selectedTab, setSelectedTab] = useState<string>('id')
-
+const FindNavigator = () => {
   const navigate = useNavigate()
+  const location = useLocation()
+  const path = location.pathname
 
-  const handleSetTab = (tabName: string) => {
-    setSelectedTab(tabName)
-    onTab(tabName)
-    tabName === 'id' ? navigate('/find-user') : navigate('/find-user/1')
+  const moveTab = (tabName: string) => {
+    tabName === 'id' ? navigate('/find-user/id') : navigate('/find-user/1')
   }
 
   return (
     <Container>
       <Navigator
-        onClick={() => handleSetTab('id')}
-        active={selectedTab === 'id'}
+        onClick={() => moveTab('id')}
+        active={path === '/find-user/id'}
       >
         아이디 찾기
       </Navigator>
-      <Navigator
-        onClick={() => handleSetTab('pw')}
-        active={selectedTab === 'pw'}
-      >
+      <Navigator onClick={() => moveTab('pw')} active={path === '/find-user/1'}>
         비밀번호 찾기
       </Navigator>
     </Container>

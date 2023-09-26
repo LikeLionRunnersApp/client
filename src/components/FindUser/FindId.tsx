@@ -33,7 +33,7 @@ const FindId = () => {
   }
 
   return (
-    <Container>
+    <>
       <FormInput
         type="text"
         id="name"
@@ -66,23 +66,11 @@ const FindId = () => {
           아이디 찾기
         </Button>
       </ButtonContainer>
-    </Container>
+    </>
   )
 }
 
 export default FindId
-
-const Container = styled.div`
-  margin-top: 36px;
-
-  & input {
-    margin-bottom: 40px;
-  }
-
-  & input:last-of-type {
-    margin-bottom: 0;
-  }
-`
 
 const Alert = styled.strong<{ isError: boolean }>`
   position: relative;
