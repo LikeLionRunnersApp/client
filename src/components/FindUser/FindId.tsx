@@ -1,17 +1,17 @@
 import styled from '@emotion/styled'
-import { ChangeEvent, useEffect } from 'react'
+import { useEffect } from 'react'
 import { FormInput } from '@components/Common/UI'
 import { useState } from 'react'
 import useFormValidation from '@/hooks/useFormValidation'
+import { Button } from '@components/Common/UI'
 
 const FindId = () => {
   const { phoneNumber, phoneNumberValid, handlePhoneNumberChange } =
     useFormValidation({ initialPhoneNumber: '' })
+  const [name, setName] = useState('')
   const [phoneNumberAlert, setPhoneNumberAlert] = useState('')
-  const [input, setInput] = useState({
-    name: '',
-    phoneNum: '',
-  })
+
+  const isValid = phoneNumberValid && name.length > 0
 
   useEffect(() => {
     if (phoneNumber.length > 0) {
@@ -21,14 +21,12 @@ const FindId = () => {
     }
   }, [phoneNumber])
 
-  const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setInput({ ...input, [name]: value, phoneNum: phoneNumber })
-  }
+  const handleShowId = () => {
+    // 일치하지 않는 정보 일 경우
+    return alert('일치하는 정보가 없습니다.')
 
-  useEffect(() => {
-    console.log(input)
-  }, [input, phoneNumber])
+    // 일치할 경우 id출력
+  }
 
   return (
     <Container>
@@ -36,8 +34,8 @@ const FindId = () => {
         type="text"
         id="name"
         name="name"
-        onChange={handleChangeInput}
-        value={input.name}
+        onChange={e => setName(e.target.value)}
+        value={name}
         placeholder="이름을 입력해주세요"
         hidden={false}
         label="실명 입력"
@@ -53,6 +51,17 @@ const FindId = () => {
         label="전화번호 입력"
       />
       {<Alert isError={phoneNumberValid}>{phoneNumberAlert}</Alert>}
+      <ButtonContainer>
+        <Button
+          type="submit"
+          variant={isValid ? 'start' : 'login'}
+          size="lg"
+          disabled={isValid ? false : true}
+          onClick={handleShowId}
+        >
+          아이디 찾기
+        </Button>
+      </ButtonContainer>
     </Container>
   )
 }
@@ -77,4 +86,12 @@ const Alert = styled.strong<{ isError: boolean }>`
   font-size: 12px;
   font-weight: 400;
   color: ${({ isError }) => (isError ? '#989491' : '#FF9704')};
+`
+
+const ButtonContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  padding: 0 16px 24px;
+  left: 0;
+  bottom: 0;
 `

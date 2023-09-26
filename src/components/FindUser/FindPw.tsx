@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { FormInput } from '../Common/UI'
 import useFormValidation from '@/hooks/useFormValidation'
 import { useState, useEffect } from 'react'
-import Button from '@components/Common/UI/Button'
+import { Button } from '@components/Common/UI'
 import { useNavigate } from 'react-router-dom'
 
 const FindPw = () => {
