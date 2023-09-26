@@ -10,7 +10,8 @@ import {
 } from '@components/Main'
 import headerBackgroundImage from '@assets/images/Main/bg.png'
 import run from '@assets/images/Main/run.svg'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export interface IWeeks {
   id: number
@@ -27,6 +28,13 @@ export interface IWeeks {
 
 const Main = () => {
   const [date, setDate] = useState('')
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    !token && navigate('/signin')
+  }, [])
 
   const weeks: IWeeks[] = [
     {
