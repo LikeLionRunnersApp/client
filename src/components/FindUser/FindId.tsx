@@ -1,14 +1,17 @@
 import styled from '@emotion/styled'
-import { useEffect } from 'react'
+import { ChangeEvent, useEffect } from 'react'
 import { FormInput } from '@components/Common/UI'
 import { useState } from 'react'
 import useFormValidation from '@/hooks/useFormValidation'
 
 const FindId = () => {
-  const [name, setName] = useState('')
   const { phoneNumber, phoneNumberValid, handlePhoneNumberChange } =
     useFormValidation({ initialPhoneNumber: '' })
   const [phoneNumberAlert, setPhoneNumberAlert] = useState('')
+  const [input, setInput] = useState({
+    name: '',
+    phoneNum: '',
+  })
 
   useEffect(() => {
     if (phoneNumber.length > 0) {
@@ -18,14 +21,23 @@ const FindId = () => {
     }
   }, [phoneNumber])
 
+  const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setInput({ ...input, [name]: value, phoneNum: phoneNumber })
+  }
+
+  useEffect(() => {
+    console.log(input)
+  }, [input, phoneNumber])
+
   return (
     <Container>
       <FormInput
         type="text"
         id="name"
         name="name"
-        onChange={e => setName(e.target.value)}
-        value={name}
+        onChange={handleChangeInput}
+        value={input.name}
         placeholder="이름을 입력해주세요"
         hidden={false}
         label="실명 입력"
