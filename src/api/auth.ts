@@ -1,22 +1,15 @@
 import instance from '@api/index'
-import { User, UserInfo } from 'types/index'
+import { User, UserInfo } from '@types/index'
 
 export const fetchLogin = async ({
   memberId,
   password,
-}: User<string>): Promise<{ token: string } | undefined> => {
-  try {
-    const res = await instance.post('/login', {
-      memberId,
-      password,
-    })
-    if (res.status === 401) {
-      return undefined
-    }
-    return res.data
-  } catch (err) {
-    console.error(err)
-  }
+}: User<string>): Promise<{ token: string }> => {
+  const res = await instance.post('/login', {
+    memberId,
+    password,
+  })
+  return res.data
 }
 
 export const fetchSignUp = async ({
@@ -24,12 +17,21 @@ export const fetchSignUp = async ({
   phoneNum,
   password,
   name,
-}: UserInfo<string>): Promise<{ signUpResult: string }> => {
+}: UserInfo<string>): Promise<{ ok: boolean }> => {
   const res = await instance.post('/sign-up', {
     memberId,
     phoneNum,
     password,
     name,
+  })
+  return res.data
+}
+
+export const fetchMemberIdDuplicated = async (
+  memberId: string,
+): Promise<{ ok: boolean }> => {
+  const res = await instance.post('/checkDuplicateMemberId', {
+    memberId,
   })
   return res.data
 }

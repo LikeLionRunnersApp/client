@@ -1,8 +1,8 @@
 import instance from '@api/index'
 
 export const loginWithKakao = () => {
-  const CLIENT_ID = `${process.env.REACT_APP_RESTAPI_KAKAO_APP_KEY}`
-  const REDIRECT_ID = `${process.env.REACT_APP_REDIRECT_URI}`
+  const CLIENT_ID = `${import.meta.env.REACT_APP_RESTAPI_KAKAO_APP_KEY}`
+  const REDIRECT_ID = `${import.meta.env.REACT_APP_REDIRECT_URI}`
 
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_ID}&response_type=code`
 

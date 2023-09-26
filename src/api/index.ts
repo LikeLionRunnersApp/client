@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
 
 const instance: AxiosInstance = axios.create({
-  baseURL: 'http://49.50.166.65:8080',
+  baseURL: import.meta.env.REACT_APP_API_URL,
 })
 
 instance.defaults.headers.post['Content-Type'] = 'application/json'
@@ -12,7 +12,7 @@ instance.interceptors.request.use(
     const token = localStorage.getItem('token')
     if (token) {
       config.headers = {
-        Authorization: `Bearer ${process.env.REACT_APP_API}`,
+        Authorization: `Bearer ${token}`,
       }
     } else {
       config.headers = {
