@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 
 import RecruitmentListItem from './RecruitmentListItem'
-import { IWeeks } from '@pages/Home'
+import { Recruitment } from '@/types/'
 
 interface Props {
-  weeks: IWeeks[]
+  weeks: Recruitment[]
   date: string
 }
 

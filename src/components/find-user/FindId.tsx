@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 import { useEffect } from 'react'
-import { FormInput } from '@components/Common/UI'
+import { FormInput } from '@/components/common/UI'
 import { useState } from 'react'
 import useFormValidation from '@/hooks/useFormValidation'
-import { Button } from '@components/Common/UI'
-import { fetchGetMemberId } from '@/api/recovery'
+import { Button } from '@/components/common/UI'
+import { fetchGetMemberId } from '@/apis/recovery'
 
 const FindId = () => {
   const { phoneNumber, phoneNumberValid, handlePhoneNumberChange } =

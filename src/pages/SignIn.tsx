@@ -1,9 +1,9 @@
-import { BaseLayout } from '@components/Common'
-import { Container } from '@components/Common'
-import SignInHeader from '@/components/SignIn/SignInHeader'
-import SignInForm from '@/components/SignIn/SignInForm'
-import Navigate from '@/components/SignIn/Navigate'
-import SocialLogin from '@/components/SignIn/SocialLogin'
+import { BaseLayout } from '@components/common'
+import { Container } from '@components/common'
+import SignInHeader from '@/components/sign-in/SignInHeader'
+import SignInForm from '@/components/sign-in/SignInForm'
+import Navigate from '@/components/sign-in/Navigate'
+import SocialLogin from '@/components/sign-in/SocialLogin'
 
 const SignIn = () => {
   return (

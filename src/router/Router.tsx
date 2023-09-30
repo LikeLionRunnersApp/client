@@ -1,12 +1,12 @@
-import { Detail, SignIn, SignUp, Home, FindUser } from '@pages/index'
+import { Detail, SignIn, SignUp, Home, FindUser } from '@/pages/index'
 import { Routes, Route } from 'react-router-dom'
-import KakaoCallback from '@components/SignIn/KakaoCallback'
+import KakaoCallback from '@/components/sign-in/KakaoCallback'
 import {
   Success,
   LoginCredentialsInput,
   UserProfileInput,
-} from '@components/SignUp/'
-import { FindId, FindPw, ResetPw } from '@/components/FindUser/'
+} from '@/components/sign-up/'
+import { FindId, FindPw, ResetPw } from '@/components/find-user'
 
 const Router = () => {
   return (

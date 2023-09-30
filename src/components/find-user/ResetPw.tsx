@@ -1,11 +1,11 @@
 import { useLocation } from 'react-router-dom'
-import { FormInput } from '../Common/UI'
+import { FormInput } from '../common/UI'
 import useFormValidation from '@/hooks/useFormValidation'
 import styled from '@emotion/styled'
 import { Button } from '@components/Common/UI'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { fetchResetPassword } from '@/api/recovery'
+import { fetchResetPassword } from '@/apis/recovery'
 
 const ResetPw = () => {
   const {

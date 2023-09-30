@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
-import { FormInput } from '../Common/UI'
+import { FormInput } from '../common/UI'
 import useFormValidation from '@/hooks/useFormValidation'
 import { useState, useEffect } from 'react'
-import { Button } from '@components/Common/UI'
+import { Button } from '@/components/common/UI'
 import { useNavigate } from 'react-router-dom'
-import { fetchSendAuth } from '@/api/recovery'
+import { fetchSendAuth } from '@/apis/recovery'
 
 const FindPw = () => {
   const {

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import Button from '@components/Common/UI/Button'
 import { Icons } from '@assets/images/Icon'
-import { loginWithKakao } from '@api/oauth'
+import { loginWithKakao } from '@/apis/oauth'
 
 const SocialLogin = () => {
   return (

@@ -4,7 +4,7 @@ import theme from '@assets/styles/theme'
 import useDate from '@hooks/useDate'
 import styled from '@emotion/styled'
 import { Wheathers } from '@assets/images/wheather/index'
-import { fetchGetWheather } from '@/api/wheather'
+import { fetchGetWheather } from '@/apis/wheather'
 
 interface WheatherProps {
   color: keyof typeof theme.palette

@@ -12,7 +12,7 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: '@', replacement: path.resolve(__dirname, 'src') },
-      { find: '@api', replacement: path.resolve(__dirname, 'src/api') },
+      { find: '@apis', replacement: path.resolve(__dirname, 'src/apis') },
       { find: '@assets', replacement: path.resolve(__dirname, 'src/assets') },
       {
         find: '@components',

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import useDate from '@hooks/useDate'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const moveDayToFront = () => {
   const daysOfWeek = ['월', '화', '수', '목', '금', '토', '일']
@@ -38,19 +38,22 @@ interface Props {
 
 const Calendar = ({ onGetAsync }: Props) => {
   const [index, setIndex] = useState(0)
+  const [weekCalendar, setWeekCalendar] = useState<
+    Array<{ idx: number; week: string; day: string }>
+  >([])
   const shiftedDaysOfWeek = moveDayToFront()
   const nextSevenDays = sevenDays()
   const [year, formattedMonth] = useDate()
 
-  let weekCalendar = []
-  for (let i = 0; i < 7; i++) {
-    const item = {
+  useEffect(() => {
+    const newWeekCalendar = Array.from({ length: 7 }, (_, i) => ({
       idx: i,
       week: shiftedDaysOfWeek[i],
       day: nextSevenDays[i],
-    }
-    weekCalendar.push(item)
-  }
+    }))
+
+    setWeekCalendar(newWeekCalendar)
+  }, [])
 
   const clickCalendarHandler = (idx: number, day: string) => {
     onGetAsync(`${year}-${formattedMonth}-${day}`)

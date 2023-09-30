@@ -8,17 +8,41 @@ export interface UserInfo<T extends string = string> extends User<T> {
   name: T
 }
 
-export interface Weeks {
+// export interface Weeks {
+//   id: number
+//   flag: 'interval' | 'run' | 'work'
+//   image: string
+//   title: string
+//   totalMember: number
+//   joinMember: number
+//   play_time: number
+//   location: string
+//   time: string
+//   status: 'start' | 'participation' | 'complete'
+// }
+
+export interface Guests {
   id: number
-  flag: 'interval' | 'run' | 'work'
-  image: string
+  guestId: string
+  participate: boolean
+}
+
+export interface Recruitment {
+  id: string
+  hostId: string
   title: string
-  totalMember: number
-  joinMember: number
-  play_time: number
-  location: string
+  content: string
+  flag: 'run' | 'walk' | 'interval'
+  place: string
   time: string
+  runTime: string
+  walkTime: string
+  playTime: string
+  repeat: string
+  joinMember: number
+  totalMember: number
   status: 'start' | 'participation' | 'complete'
+  guests: Guests
 }
 
 export interface Params {

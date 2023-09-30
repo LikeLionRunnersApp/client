@@ -8,10 +8,10 @@ import Flag from '@components/Common/UI/Flag'
 import { Icon } from '@components/Common/UI'
 import Button from '@components/Common/UI/Button'
 
-import { IWeeks } from '@pages/Home'
+import { Recruitment } from '@/types'
 
 interface Props {
-  week: IWeeks
+  week: Recruitment
   date: string
 }
 

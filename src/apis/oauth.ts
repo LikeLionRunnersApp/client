@@ -1,4 +1,4 @@
-import instance from '@/api/instance'
+import instance from '@/apis/instance'
 
 export const loginWithKakao = () => {
   const CLIENT_ID = `${import.meta.env.REACT_APP_RESTAPI_KAKAO_APP_KEY}`

@@ -3,7 +3,7 @@ import { FormInput, Button } from '@components/Common/UI'
 import { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import useFormValidation from '@hooks/useFormValidation'
-import { fetchSignUp } from '@/api/auth'
+import { fetchSignUp } from '@/apis/auth'
 
 const UserProfileInput = () => {
   const { phoneNumber, phoneNumberValid, handlePhoneNumberChange } =

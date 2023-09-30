@@ -1,18 +1,18 @@
 import styled from '@emotion/styled'
 
-import { BaseLayout, Container } from '@components/Common'
+import { BaseLayout, Container } from '@components/common'
 import {
   Date,
   Wheather,
   Slide,
   Calendar,
   RecruitmentList,
-} from '@components/Main'
+} from '@components/home'
 import headerBackgroundImage from '@assets/images/Main/bg.png'
 import run from '@assets/images/Main/run.svg'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Weeks } from '@/types'
+import { fetchGetRecruitmentList } from '@/apis/home'
 
 const Main = () => {
   const [date, setDate] = useState('')
@@ -24,9 +24,9 @@ const Main = () => {
     !token && navigate('/signin')
   }, [])
 
-  const weeks: Weeks[] = [
+  const weeks = [
     {
-      id: 1,
+      id: '1',
       flag: 'interval',
       image: '',
       title: '뉴비 환영!! 아기사자 모여라',
@@ -125,8 +125,8 @@ const Main = () => {
 
   const handleGetAsync = async (currentDate: string) => {
     setDate(currentDate)
-    console.log(date)
-    // const res = await axios()
+    const res = await fetchGetRecruitmentList(date)
+    console.log(res)
   }
 
   return (

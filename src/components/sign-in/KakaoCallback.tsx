@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
-import { fetchGetKakaoAccessToken } from '@api/oauth'
+import { fetchGetKakaoAccessToken } from '@apis/oauth'
 
 const KakaoCallback = () => {
   const location = useLocation()

@@ -3,7 +3,7 @@ import { FormInput, Button } from '@components/Common/UI'
 import useFormValidation from '@hooks/useFormValidation'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { fetchMemberIdDuplicated } from '@/api/auth'
+import { fetchMemberIdDuplicated } from '@/apis/auth'
 
 const LoginCredentialsInput = () => {
   const {

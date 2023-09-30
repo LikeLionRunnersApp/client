@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Params } from '@types'
+import { Params } from '@/types'
 
 export const fetchGetWheather = async ({
   formattedDate,
