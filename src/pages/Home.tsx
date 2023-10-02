@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { BaseLayout, Container } from '@components/common'
+import { BaseLayout, Container } from '@components/Common'
 import {
   Date,
   Wheather,

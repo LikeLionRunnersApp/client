@@ -1,12 +1,12 @@
-import { BaseLayout } from '@components/common'
-import { Container } from '@components/common'
+import { BaseLayout } from '@components/Common'
+import { Container } from '@components/Common'
 
-import HeaderBar from '@/components/detail/HeaderBar'
-import Title from '@/components/detail/Title'
-import Info from '@/components/detail/info/Info'
-import Host from '@/components/detail/Host'
-import Join from '@/components/detail/join/Join'
-import FooterBar from '@/components/detail/FooterBar'
+import HeaderBar from '@/components/Detail/HeaderBar'
+import Title from '@/components/Detail/Title'
+import Info from '@/components/Detail/Info/Info'
+import Host from '@/components/Detail/Host'
+import Join from '@/components/Detail/Join/Join'
+import FooterBar from '@/components/Detail/FooterBar'
 
 import styled from '@emotion/styled'
 

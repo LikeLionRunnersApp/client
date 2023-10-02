@@ -1,5 +1,5 @@
-import { BaseLayout } from '@components/common'
-import { Container } from '@components/common'
+import { BaseLayout } from '@components/Common'
+import { Container } from '@components/Common'
 import SignInHeader from '@/components/sign-in/SignInHeader'
 import SignInForm from '@/components/sign-in/SignInForm'
 import Navigate from '@/components/sign-in/Navigate'

@@ -1,5 +1,5 @@
-import { BaseLayout, Container } from '@components/common'
-import FormHeader from '@components/common/FormHeader'
+import { BaseLayout, Container } from '@components/Common'
+import FormHeader from '@components/Common/FormHeader'
 import FindNavigator from '@components/find-user/FindNavigator'
 import { Outlet } from 'react-router-dom'
 import styled from '@emotion/styled'
