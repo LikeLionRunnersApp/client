@@ -4,7 +4,7 @@ import useFormValidation from '@/hooks/useFormValidation'
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/common/UI'
 import { useNavigate } from 'react-router-dom'
-import { fetchSendAuth } from '@/apis/recovery'
+import { fetchAuthSend, fetchAuthCheck } from '@/apis/recovery'
 
 const FindPw = () => {
   const {
@@ -23,10 +23,6 @@ const FindPw = () => {
   const [memberIdAlert, setMemberIdAlert] = useState<string>('')
   const [isVerificationBox, setIsVerificationBox] = useState(false)
   const [verificationCode, setVerificationCode] = useState<string>('')
-  const [auth, setAuth] = useState<{ authCode: string; token?: string }>({
-    authCode: '',
-    token: '',
-  })
 
   const navigate = useNavigate()
 
@@ -48,19 +44,16 @@ const FindPw = () => {
     const isValid = memberIdValid && phoneNumberValid
     if (!isValid) return alert('정보를 잘 입력해주세요.')
 
-    const res = await fetchSendAuth({ memberId, name, phoneNum: phoneNumber })
+    const res = await fetchAuthSend({ memberId, name, phoneNum: phoneNumber })
 
-    if (res.authCode === '') {
-      alert('일치하는 정보가 없습니다.')
-    } else {
-      setAuth({ ...auth, authCode: res.authCode, token: res.token })
-      setIsVerificationBox(true)
-    }
+    res.ok ? setIsVerificationBox(true) : alert('일치하는 정보가 없습니다.')
   }
 
-  const checkVerificationCode = () => {
-    verificationCode === auth.authCode
-      ? navigate('/find-user/2', { state: { token: auth.token } })
+  const checkVerificationCode = async () => {
+    const res = await fetchAuthCheck({ memberId, authCode: verificationCode })
+
+    res.ok
+      ? navigate('/find-user/2', { state: { memberId } })
       : alert('인증번호가 일치하지 않습니다.')
   }
 

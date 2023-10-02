@@ -23,10 +23,10 @@ const ResetPw = () => {
 
   const navigate = useNavigate()
   const location = useLocation()
-  const token = location.state?.token
+  const memberId = location.state?.memberId
 
   useEffect(() => {
-    token === undefined && navigate('/find-user/1')
+    memberId === undefined && navigate('/find-user/1')
   }, [])
 
   useEffect(() => {
@@ -44,7 +44,10 @@ const ResetPw = () => {
   }, [password, confirmPassword])
 
   const handleResetPassword = async () => {
-    const res = await fetchResetPassword({ token, password: confirmPassword })
+    const res = await fetchResetPassword({
+      memberId,
+      password: confirmPassword,
+    })
 
     if (res.ok) {
       alert('비밀번호 재설정이 완료되었습니다.')

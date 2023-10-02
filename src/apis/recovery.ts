@@ -11,7 +11,7 @@ export const fetchGetMemberId = async ({
   return res.data
 }
 
-export const fetchSendAuth = async ({
+export const fetchAuthSend = async ({
   memberId,
   name,
   phoneNum,
@@ -19,20 +19,34 @@ export const fetchSendAuth = async ({
   memberId: string
   name: string
   phoneNum: string
-}): Promise<{ authCode: string; token?: string }> => {
-  const res = await instance.post('/sendAuthCode', { memberId, name, phoneNum })
+}): Promise<{ ok: boolean }> => {
+  const res = await instance.post('/auth-send', { memberId, name, phoneNum })
+  return res.data
+}
+
+export const fetchAuthCheck = async ({
+  memberId,
+  authCode,
+}: {
+  memberId: string
+  authCode: string
+}): Promise<{ ok: boolean }> => {
+  const res = await instance.post('/auth-check', {
+    memberId,
+    authCode,
+  })
   return res.data
 }
 
 export const fetchResetPassword = async ({
-  token,
+  memberId,
   password,
 }: {
-  token: string
+  memberId: string
   password: string
 }): Promise<{ ok: boolean }> => {
   const res = await instance.post('/resetPassword', {
-    token,
+    memberId,
     password,
   })
   return res.data
