@@ -1,6 +1,4 @@
-import { BaseLayout } from '@components/Common'
-import { Container } from '@components/Common'
-
+import { BaseLayout, Container } from '@components/Common'
 import HeaderBar from '@/components/Detail/HeaderBar'
 import Title from '@/components/Detail/Title'
 import Info from '@/components/Detail/Info/Info'

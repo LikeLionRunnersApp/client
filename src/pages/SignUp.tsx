@@ -1,6 +1,5 @@
 import FormHeader from '@components/Common/FormHeader'
-import BaseLayout from '@components/common/BaseLayout'
-import Container from '@components/common/Conatiner'
+import { BaseLayout, Container } from '@components/Common'
 import { Outlet } from 'react-router-dom'
 import styled from '@emotion/styled'
 
