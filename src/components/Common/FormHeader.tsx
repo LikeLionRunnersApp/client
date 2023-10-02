@@ -1,14 +1,17 @@
 import styled from '@emotion/styled'
 import Icon from '@components/Common/UI/Icon'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
   title: string
 }
 
 const FormHeader = ({ title, ...props }: Props) => {
+  const navigate = useNavigate()
+
   return (
     <HeaderContainer>
-      <Icon name="prev" />
+      <Icon name="prev" onClick={() => navigate(-1)} />
       <Title>{title}</Title>
     </HeaderContainer>
   )

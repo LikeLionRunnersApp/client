@@ -13,12 +13,12 @@ interface Props {
     | 'lgDefaultCheering'
     | 'lgClickCheering'
   on?: boolean
-  onClick?: () => {}
+  onClick?(): void
 }
 
 const Icon = ({ name, onClick, on = false, ...props }: Props) => {
   return (
-    <IconWrapper {...props}>
+    <IconWrapper {...props} onClick={onClick}>
       <IconImage src={Icons[name]} on={on} />
     </IconWrapper>
   )
