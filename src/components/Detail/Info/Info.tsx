@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
-import DetailInfo from './DetailInfo'
-import DetailDescription from './DetailDescription'
+import DetailInfo from '@components/Detail/Info/DetailInfo'
+import DetailDescription from '@components/Detail/Info/DetailDescription'
 
 const Info = () => {
   return (

@@ -1,8 +1,7 @@
 import styled from '@emotion/styled'
-import { FormInput } from '../common/UI'
 import useFormValidation from '@/hooks/useFormValidation'
 import { useState, useEffect } from 'react'
-import { Button } from '@/components/common/UI'
+import { Button, FormInput } from '@/components/Common/UI'
 import { useNavigate } from 'react-router-dom'
 import { fetchAuthSend, fetchAuthCheck } from '@/apis/recovery'
 

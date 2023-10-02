@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import Icon from '@components/common/UI/Icon'
+import Icon from '@components/Common/UI/Icon'
 
 interface Props {
   title: string

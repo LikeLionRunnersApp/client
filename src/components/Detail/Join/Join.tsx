@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import JoinList from './JoinList'
+import JoinList from '@components/Detail/Join/JoinList'
 
 const Join = () => {
   return (
