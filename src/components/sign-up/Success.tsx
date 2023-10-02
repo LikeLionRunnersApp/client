@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Button } from '@/components/common/UI'
+import { Button } from '@/components/Common/UI'
 import { useNavigate } from 'react-router-dom'
 
 const Success = () => {
