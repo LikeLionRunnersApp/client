@@ -4,13 +4,16 @@ import { useState } from 'react'
 import useFormValidation from '@/hooks/useFormValidation'
 import { Button, FormInput } from '@/components/Common/UI'
 import { fetchGetMemberId } from '@/apis/recovery'
+import { Modal } from '../Common'
 
 const FindId = () => {
   const { phoneNumber, phoneNumberValid, handlePhoneNumberChange } =
     useFormValidation({ initialPhoneNumber: '' })
-  const [name, setName] = useState('')
-  const [phoneNumberAlert, setPhoneNumberAlert] = useState('')
-
+  const [name, setName] = useState<string>('')
+  const [memberId, setMemberId] = useState<string>('')
+  const [phoneNumberAlert, setPhoneNumberAlert] = useState<string>('')
+  const [isToggle, setIsToggle] = useState<boolean>(false)
+  const [isSuccess, setIsSuccess] = useState<boolean>(false)
   const isValid = phoneNumberValid && name.length > 0
 
   useEffect(() => {
@@ -21,13 +24,16 @@ const FindId = () => {
     }
   }, [phoneNumber])
 
-  const handleShowId = async () => {
+  const handleFindId = async () => {
     const res = await fetchGetMemberId({ name, phoneNum: phoneNumber })
 
     if (res.memberId !== '') {
-      alert(res.memberId)
+      setIsToggle(true)
+      setIsSuccess(true)
+      setMemberId(res.memberId)
     } else {
-      return alert('일치하는 정보가 없습니다.')
+      setIsToggle(true)
+      setIsSuccess(false)
     }
   }
 
@@ -60,11 +66,27 @@ const FindId = () => {
           variant={isValid ? 'start' : 'login'}
           size="lg"
           disabled={isValid ? false : true}
-          onClick={handleShowId}
+          onClick={handleFindId}
         >
           아이디 찾기
         </Button>
       </ButtonContainer>
+      {isToggle &&
+        (isSuccess ? (
+          <Modal
+            onSetIsToggle={() => setIsToggle(!isToggle)}
+            onRemoveButton={true}
+            subTitle="회원님의 정보로 가입된 아이디는 아래와 같습니다."
+            result={memberId}
+            buttonText="비밀번호 찾기"
+          />
+        ) : (
+          <Modal
+            onSetIsToggle={() => setIsToggle(!isToggle)}
+            onRemoveButton={true}
+            subTitle="일치하는 정보가 없습니다."
+          />
+        ))}
     </>
   )
 }

@@ -10,15 +10,8 @@ instance.defaults.headers.get['Content-Type'] = 'application/json'
 instance.interceptors.request.use(
   (config: AxiosRequestConfig): AxiosRequestConfig => {
     const token = localStorage.getItem('token')
-    if (token) {
-      config.headers = {
-        Authorization: `Bearer ${token}`,
-      }
-    } else {
-      config.headers = {
-        Authorization: '',
-      }
-    }
+    token && (config.headers = { Authorization: `Bearer ${token}` })
+
     return config
   },
   (error: AxiosError): Promise<AxiosError> => {
