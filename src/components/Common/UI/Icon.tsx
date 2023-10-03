@@ -12,6 +12,7 @@ interface Props {
     | 'smClickCheering'
     | 'lgDefaultCheering'
     | 'lgClickCheering'
+    | 'remove'
   on?: boolean
   onClick?(): void
 }
