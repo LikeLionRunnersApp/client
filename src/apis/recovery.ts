@@ -45,7 +45,7 @@ export const fetchResetPassword = async ({
   memberId: string
   password: string
 }): Promise<{ ok: boolean }> => {
-  const res = await instance.post('/resetPassword', {
+  const res = await instance.patch('/resetPassword', {
     memberId,
     password,
   })

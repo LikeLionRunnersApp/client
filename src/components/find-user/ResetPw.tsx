@@ -45,7 +45,14 @@ const ResetPw = () => {
     }
   }, [password, confirmPassword])
 
+  const resetState = () => {
+    setIsToggle(false)
+    setIsSuccess(false)
+  }
+
   const handleResetPassword = async () => {
+    resetState()
+
     const res = await fetchResetPassword({
       memberId,
       password: confirmPassword,
@@ -63,7 +70,7 @@ const ResetPw = () => {
   return (
     <>
       <FormInput
-        type="text"
+        type="password"
         id="password"
         name="password"
         onChange={e => handlePasswordChange(e.target.value)}
@@ -74,7 +81,7 @@ const ResetPw = () => {
       />
       {<Alert isError={passwordValid}>{passwordAlert}</Alert>}
       <FormInput
-        type="text"
+        type="password"
         id="confirmPassword"
         name="confirmPassword"
         onChange={e => handleConfirmPasswordChange(e.target.value)}
@@ -95,19 +102,13 @@ const ResetPw = () => {
           다음
         </Button>
       </ButtonContainer>
-      {isToggle && isSuccess ? (
+      {isToggle && isSuccess && (
         <Modal
           onSetIsToggle={() => setIsToggle(!isToggle)}
           onRemoveButton={true}
           subTitle="비밀번호 재설정을 완료하였습니다."
           buttonText="로그인 하러가기"
           onClick={() => navigate('/signin')}
-        />
-      ) : (
-        <Modal
-          onSetIsToggle={() => setIsToggle(!isToggle)}
-          onRemoveButton={true}
-          subTitle="비밀번호 재설정에 실패하였습니다."
         />
       )}
     </>

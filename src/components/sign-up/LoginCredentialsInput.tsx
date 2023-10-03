@@ -53,11 +53,12 @@ const LoginCredentialsInput = () => {
 
   const checkDuplicateEmail = async () => {
     const res = await fetchMemberIdDuplicated(memberId)
-    setIsDuplicatedMemberId(res.ok)
 
-    isDuplicatedMemberId === true
+    res.ok
       ? setMemberIdDuplicated('사용 가능한 이메일이어유~')
       : setMemberIdDuplicated('이미 사용하고 있는 이메일이어유~')
+
+    setIsDuplicatedMemberId(res.ok)
   }
 
   const handleClickNext = async () => {
