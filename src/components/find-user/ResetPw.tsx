@@ -1,11 +1,11 @@
 import { useLocation } from 'react-router-dom'
-import { FormInput } from '@/components/Common/UI'
+import { FormInput, Button } from '@/components/Common/UI'
 import useFormValidation from '@/hooks/useFormValidation'
 import styled from '@emotion/styled'
-import { Button } from '@components/Common/UI'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { fetchResetPassword } from '@/apis/recovery'
+import { Modal } from '../Common'
 
 const ResetPw = () => {
   const {
@@ -20,6 +20,8 @@ const ResetPw = () => {
   })
   const [passwordAlert, setPasswordAlert] = useState<string>('')
   const [confirmPasswordAlert, setConfirmPasswordAlert] = useState<string>('')
+  const [isToggle, setIsToggle] = useState<boolean>(false)
+  const [isSuccess, setIsSuccess] = useState<boolean>(false)
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -50,10 +52,11 @@ const ResetPw = () => {
     })
 
     if (res.ok) {
-      alert('비밀번호 재설정이 완료되었습니다.')
-      navigate('/signin')
+      setIsToggle(true)
+      setIsSuccess(true)
     } else {
-      alert('비밀번호 재설정에 실패하였습니다.')
+      setIsToggle(true)
+      setIsSuccess(false)
     }
   }
 
@@ -92,6 +95,21 @@ const ResetPw = () => {
           다음
         </Button>
       </ButtonContainer>
+      {isToggle && isSuccess ? (
+        <Modal
+          onSetIsToggle={() => setIsToggle(!isToggle)}
+          onRemoveButton={true}
+          subTitle="비밀번호 재설정을 완료하였습니다."
+          buttonText="로그인 하러가기"
+          onClick={() => navigate('/signin')}
+        />
+      ) : (
+        <Modal
+          onSetIsToggle={() => setIsToggle(!isToggle)}
+          onRemoveButton={true}
+          subTitle="비밀번호 재설정에 실패하였습니다."
+        />
+      )}
     </>
   )
 }
