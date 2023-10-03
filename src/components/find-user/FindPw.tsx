@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import useFormValidation from '@/hooks/useFormValidation'
 import { useState, useEffect } from 'react'
 import { Button, FormInput } from '@/components/Common/UI'
+import { Modal } from '@components/Common'
 import { useNavigate } from 'react-router-dom'
 import { fetchAuthSend, fetchAuthCheck } from '@/apis/recovery'
 
@@ -22,6 +23,10 @@ const FindPw = () => {
   const [memberIdAlert, setMemberIdAlert] = useState<string>('')
   const [isVerificationBox, setIsVerificationBox] = useState(false)
   const [verificationCode, setVerificationCode] = useState<string>('')
+  const [isToggle, setIsToggle] = useState<boolean>(false)
+  const [isValid, setIsValid] = useState<boolean>(false)
+  const [isCheckVerification, setIsCheckVerification] = useState<boolean>(false)
+  const [isSuccess, setIsSuccess] = useState<boolean>(false)
 
   const navigate = useNavigate()
 
@@ -39,21 +44,45 @@ const FindPw = () => {
     }
   }, [memberId, phoneNumber])
 
-  const checkVerification = async () => {
+  const resetState = () => {
+    setIsToggle(false)
+    setIsValid(false)
+    setIsCheckVerification(false)
+  }
+
+  const validateForm = () => {
     const isValid = memberIdValid && phoneNumberValid
-    if (!isValid) return alert('정보를 잘 입력해주세요.')
+    if (!isValid) {
+      setIsToggle(true)
+      setIsValid(true)
+      return false
+    }
+    return true
+  }
+
+  const checkVerification = async () => {
+    resetState()
+    if (!validateForm()) return
 
     const res = await fetchAuthSend({ memberId, name, phoneNum: phoneNumber })
 
-    res.ok ? setIsVerificationBox(true) : alert('일치하는 정보가 없습니다.')
+    if (res.ok) {
+      setIsVerificationBox(true)
+    } else {
+      setIsToggle(true)
+      setIsCheckVerification(true)
+    }
   }
 
   const checkVerificationCode = async () => {
     const res = await fetchAuthCheck({ memberId, authCode: verificationCode })
 
-    res.ok
-      ? navigate('/find-user/2', { state: { memberId } })
-      : alert('인증번호가 일치하지 않습니다.')
+    if (res.ok) {
+      navigate('/find-user/2', { state: { memberId } })
+    } else {
+      setIsToggle(true)
+      setIsSuccess(true)
+    }
   }
 
   return (
@@ -118,6 +147,27 @@ const FindPw = () => {
           다음
         </Button>
       </ButtonContainer>
+      {isToggle && isValid && (
+        <Modal
+          onSetIsToggle={() => setIsToggle(!isToggle)}
+          onRemoveButton={true}
+          subTitle="입력하신 형식이 잘못되었습니다."
+        />
+      )}
+      {isToggle && isCheckVerification && (
+        <Modal
+          onSetIsToggle={() => setIsToggle(!isToggle)}
+          onRemoveButton={true}
+          subTitle="일치하는 정보가 없습니다."
+        />
+      )}
+      {isToggle && isSuccess && (
+        <Modal
+          onSetIsToggle={() => setIsToggle(!isToggle)}
+          onRemoveButton={true}
+          subTitle="인증번호가 일치하지 않습니다."
+        />
+      )}
     </>
   )
 }

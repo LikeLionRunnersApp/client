@@ -7,6 +7,7 @@ interface Props {
   result?: string
   onRemoveButton?: boolean
   buttonText?: string
+  onClick?: () => void
 }
 
 const Modal = ({
@@ -15,6 +16,7 @@ const Modal = ({
   result,
   subTitle,
   buttonText,
+  onClick,
 }: Props) => {
   return (
     <Container>
@@ -23,7 +25,7 @@ const Modal = ({
         {subTitle && <SubTitle>{subTitle}</SubTitle>}
         {result && <Result>{result}</Result>}
         {buttonText && (
-          <Button type="button" variant="start" size="lg">
+          <Button type="button" variant="start" size="lg" onClick={onClick}>
             {buttonText}
           </Button>
         )}

@@ -5,6 +5,7 @@ import useFormValidation from '@/hooks/useFormValidation'
 import { Button, FormInput } from '@/components/Common/UI'
 import { fetchGetMemberId } from '@/apis/recovery'
 import { Modal } from '../Common'
+import { useNavigate } from 'react-router-dom'
 
 const FindId = () => {
   const { phoneNumber, phoneNumberValid, handlePhoneNumberChange } =
@@ -15,6 +16,8 @@ const FindId = () => {
   const [isToggle, setIsToggle] = useState<boolean>(false)
   const [isSuccess, setIsSuccess] = useState<boolean>(false)
   const isValid = phoneNumberValid && name.length > 0
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (phoneNumber.length > 0) {
@@ -79,6 +82,7 @@ const FindId = () => {
             subTitle="회원님의 정보로 가입된 아이디는 아래와 같습니다."
             result={memberId}
             buttonText="비밀번호 찾기"
+            onClick={() => navigate('/find-user/1')}
           />
         ) : (
           <Modal
