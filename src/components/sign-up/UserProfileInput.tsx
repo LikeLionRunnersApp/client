@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import useFormValidation from '@hooks/useFormValidation'
 import { fetchSignUp } from '@/apis/auth'
+import { fetchKakaoSignup } from '@/apis/oauth'
 
 const UserProfileInput = () => {
   const { phoneNumber, phoneNumberValid, handlePhoneNumberChange } =
@@ -13,7 +14,7 @@ const UserProfileInput = () => {
 
   const navigate = useNavigate()
   const location = useLocation()
-  const userInfo = location.state
+  const { memberId, password, accessToken } = location.state
 
   useEffect(() => {
     if (phoneNumber.length > 0) {
@@ -24,9 +25,24 @@ const UserProfileInput = () => {
   }, [phoneNumber])
 
   const handleClickNext = async () => {
-    const res = await fetchSignUp({ ...userInfo, phoneNum: phoneNumber, name })
-
-    res.ok ? navigate('/signup/3') : alert('회원가입에 실패하였습니다.')
+    if (accessToken !== undefined) {
+      const res = await fetchKakaoSignup({
+        name,
+        phoneNum: phoneNumber,
+        accessToken,
+      })
+      res.token !== ''
+        ? navigate('/signup/3')
+        : alert('회원가입에 실패하였습니다.')
+    } else {
+      const res = await fetchSignUp({
+        memberId,
+        password,
+        phoneNum: phoneNumber,
+        name,
+      })
+      res.ok ? navigate('/signup/3') : alert('회원가입에 실패하였습니다.')
+    }
   }
 
   return (

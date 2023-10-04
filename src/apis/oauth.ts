@@ -31,3 +31,31 @@ export const fetchGetKakaoAccessToken = async (
 
   return KakaoAccessToken
 }
+
+export const fetchMemberCheck = async (
+  kakaoAccessToken: string,
+): Promise<{ token: string }> => {
+  const res = await instance.post('/kakao/MemberCheck', {
+    accessToken: kakaoAccessToken,
+  })
+
+  return res.data
+}
+
+export const fetchKakaoSignup = async ({
+  name,
+  phoneNum,
+  accessToken,
+}: {
+  name: string
+  phoneNum: string
+  accessToken: string
+}): Promise<{ token: string }> => {
+  const res = await instance.post('/kakao/SignUp', {
+    name,
+    phoneNum,
+    accessToken,
+  })
+
+  return res.data
+}
